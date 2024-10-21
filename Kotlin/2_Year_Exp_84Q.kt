@@ -343,3 +343,22 @@ Coroutine
 
 81. What are visibility modifiers in Kotlin?
 -> Public, Private, Protected, Internal
+
+
+82. What is crossinline in kotlin 
+-> Crossinline is a modifier used with lambda parameter in inline function to prevent non-local returns 
+-> Suppose you have a return in lambda function which is being passed as a param to the inline function
+-> then return statement will return from local to parent function
+-> but we wrote return just to exit lambda function, In such case, we use crossinline in inline function args
+-> IMP: crossinline is useful when we need to write a return statement in lambda else no need for lambda
+
+
+83. What is noinline
+-> When lambda function calls from inline function kotlin auto makes that inline 
+-> If we don't want then we can specify lambda args as noinline
+
+84. What is an inline class in kotlin 
+-> inline class in kotlin is a special type of class used to wrap data
+-> This class also called a value class
+-> The main purpose of this class is to use less memory and improve the performance
+-> Inline class have only a single param in the primary constructor
