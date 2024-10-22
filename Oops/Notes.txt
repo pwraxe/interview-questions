@@ -1,1 +1,78 @@
-Sample File
+Company: Fibe (EarlySalary)
+
+100 top quality Kotlin Intertview Quesiton for 1 Years of Experiance with answer
+
+100 top quality Kotlin Intertview Quesiton for 2 Years of Experiance with answer
+
+100 top quality Kotlin Intertview Quesiton for 3 Years of Experiance with answer
+
+
+100 top quality Oops  Intertview Quesiton for 3 Years of Experiance with answer
+
+100 top quality Kotlin Oops  Interview Questions for 2 Years of Experience with answer
+
+100 top quality Kotlin Oops  Interview Questions for 1 Years of Experience with answer
+
+
+100 top quality Android  Intertview Quesiton for 3 Years of Experiance with answer
+
+100 top quality Android  Intertview Quesiton for 2 Years of Experiance with answer
+
+100 top quality Android  Intertview Quesiton for 1 Years of Experiance with answer
+
+
+
+
+Each Part in Depth
+===============
+Kotlin
+MVVM
+Ktor
+Coroutine
+Flow
+Memory Management
+Optimization
+Retrofit
+Dependency Injection (Hilt)
+OOPS
+Glide
+Android SDK
+Jetpack Components 
+Work Manager
+Data Binding
+ViewModel
+Android Framework
+Android Backend Service
+Android Design Principle
+Git
+Push Notification
+CI/CD
+Clean Architecture
+MVVM Architecture
+Reporsitory Pattern
+MVI Architecture
+Android Network Interview Quesrion
+Android Clean Architecture interview quetrin
+DSL
+covariance
+===================
+Razorpay
+HDFC
+Paytm
+
+Know About Company
+==================
+AmbitionBox
+Q1. What is a collection?
+Q2. What are Finance services?
+Q3. Explain Object oriented programming
+Q4. Explain Design principles
+Q5. Reverse a string
+Q3. Find the missing number in an array, , given the array conatins numbers form 1 to n and one number is missing
+
+
+technical rounds are based upon your past experience and the project related things.
+
+Collect past finance work
+Collect past finance app
+collect past finance sdk/Third party
