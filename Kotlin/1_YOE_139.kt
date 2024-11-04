@@ -85,8 +85,8 @@
 
 14. What is a lateinit property?
 -> Lateinit is keyword in kotlin 
--> Use to declare a mutable variables in kotlin as a class property
--> We assure compiler that the variable will be late initialized before accessing it
+-> Use to declare a mutable variable in kotlin as a class property
+-> We assure the compiler that the variable will be initialized late before accessing it
 
 
 15. What is a backing field in Kotlin?
@@ -111,23 +111,23 @@
 -> inline function copy its body at caller place during compile time
 
 
-19. What is the purpose of with in Kotlin?
+19. What is the purpose of `with` in Kotlin?
 -> `with` is the kotlin scope function
--> This takes object as a receiver in its param
+-> This takes an object as a receiver in its param
 -> it returns `this` as scope context
--> Properties can access without the dot operator
+-> Properties can be accessed without the dot operator
 -> return type of `with` is based on the last line in the scope
 
 
 20. What are Coroutines in Kotlin?
--> Coroutine is concurrency design pattern
--> It helps developer to write asynchronous code without blocking the main thread
+-> Coroutine is a concurrency design pattern
+-> It helps the developer to write asynchronous code without blocking the main thread
 -> We Can start the coroutine in 2 ways first by launch block and other by async block,
 -> We can expect data back to the caller from async but not launch
--> async returns Deferred object and gets data using the await method calling
--> Couroutine also has suspend function same as the normal function with suspend keyword
+-> async returns the Deferred object and gets data using the await method calling
+-> Couroutine also has a suspend function, the same as the normal function with the suspend keyword
 -> Launching coroutine returns Job Object where we can control coroutine 
--> We can start, pause, stop, cancel the coroutine via the job object
+-> We can start, pause, stop, and cancel the coroutine via the job object
 -> Coroutine launch on Default dispatcher 
 
 
@@ -137,7 +137,7 @@
 
 
 23. Explain the use of when expression in Kotlin.
--> When is the same as a switch case statement in java
+-> When is the same as a switch case statement in Java
 -> We can use when as an expression to return the result
 -> We can use different types of conditions to when the expression
 -> When has else condition instead of default in switch
@@ -149,12 +149,12 @@
 
 25. What is smart casting in Kotlin?
 -> Smart cast is a compiler that automatically casts an object 
--> After checking null in the if condition null variable will become a non-null variable
+-> After checking null in the if condition, the null variable will become a non-null variable
 
 
 26.  What is a tail-recursive function in Kotlin?
 -> To avoid stackoverflow errors in kotlin during the recursive function call
--> tailored keyword is added at the function
+-> `tailrec` keyword is added at the function
 
 
 27. What are generics in Kotlin?
