@@ -288,8 +288,11 @@ fun main() {
 63. How do you create a singleton class in Kotlin?
 
 64. What is deferred in Kotlin coroutines?
+ -> It is a Job Object
+ -> It promises that it will provide results later in future
+ -> Use await() to get result
 
-65. Explain suspend function with an example.
+65. Explain the suspend function with an example.
 
 66. What is the difference between join and await in Kotlin coroutines?
 -> join: block thread until the operation is complete | use on thread    | not returns
