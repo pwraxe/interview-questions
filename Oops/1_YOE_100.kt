@@ -137,6 +137,10 @@
 69. How do you declare an extension function in Kotlin?
 
 70. What is an inline class in Kotlin?
+-> It is a special type of class that wraps a single value in the class 
+-> It has only a single value in its constructor
+-> At compile time single value gets inline hence at run-time object is not created and memory saves.
+
 
 71. What is type aliasing in Kotlin?
 
