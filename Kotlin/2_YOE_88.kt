@@ -365,7 +365,7 @@ Coroutine
 -> inline class in kotlin is a special type of class used to wrap data
 -> This class is also called a value class
 -> The main purpose of this class is to use less memory and improve the performance
--> Inline class have only a single param in the primary constructor
+-> Inline class has only a single param in the primary constructor
 
 
 85. What is the difference between open and final in Kotlin?
@@ -379,11 +379,19 @@ Coroutine
 
 
 87. What is a primary constructor in Kotlin?
--> Primary constructors are used to initialised Object
+-> Primary constructors are used to initialized Object
 -> It declares at the class header with an optional constructor keyword
 -> Class properties are auto-initialized at the time of object creation
--> It also acts as getter setter
+-> It also acts as getter and setter
 
 
 88. Explain the use of it in Kotlin.
 -> It is a single parameter optional name of the lambda expression
+
+
+89. What is covariance and contravariance in Kotlin?
+Answer:
+Covariance: When a generic type can accept a subclass.
+Contravariance: When a generic type can accept a superclass.
+Answer: Covariance (out) allows a type to be more specific (subtypes), while contravariance (in) will enable it to be more general (supertypes).
+
