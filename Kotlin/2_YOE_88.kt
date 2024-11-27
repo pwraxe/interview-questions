@@ -33,7 +33,7 @@
 -> We can directly access properties and methods directly object name
 -> It is singleton by default
 -> It is used to create singleton objects, declare anonymous classes and object expression
- 
+
 ==FUNCTIONAL
 
 11. What is a higher-order function in Kotlin?
@@ -366,6 +366,10 @@ Coroutine
 -> This class is also called a value class
 -> The main purpose of this class is to use less memory and improve the performance
 -> Inline class has only a single param in the primary constructor
+ 
+-> It is a special type of class that wraps a single value in class 
+-> It has only a single value in its constructor
+-> At compile time, a single value gets inline hence at run-time object is not created.
 
 
 85. What is the difference between open and final in Kotlin?
@@ -395,3 +399,10 @@ Covariance: When a generic type can accept a subclass.
 Contravariance: When a generic type can accept a superclass.
 Answer: Covariance (out) allows a type to be more specific (subtypes), while contravariance (in) will enable it to be more general (supertypes).
 
+interface Producer<out T> {
+    fun produce(): T
+}
+
+interface Consumer<in T> {
+    fun consume(item: T)
+}
