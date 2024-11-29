@@ -22,49 +22,51 @@ Kotlin
 	21. is lateinit initlized by null
   	22. Explain Coroutine
   	23. Launch vs async
+	24. What is a safe cast
+	25. Explain scope functions
 
 
 Database
-	24. How to Migrate Database
+	1. How to Migrate Database
 
 Activity
-	25. What is the launch mode of the Activity
-	26. Explain Single Task vs Single Instance
-	27. Serializable Vs Parcelable
-	28. XML Parsing?
-	29. WorkManager
-	30. Is there any case where the WorkManager fails?
-	31. Limit of WorkManager
- 	32. Activity Lifecycle
-  	33. Activity 'A' is open and Activity 'B' is open then what will the situation of Activity 'A' and Which method gets override
-  	34. I have 2 api and how do you call them parallelly?
+	1. What is the launch mode of the Activity
+	2. Explain Single Task vs Single Instance
+	3. Serializable Vs Parcelable
+	4. XML Parsing?
+	5. WorkManager
+	6. Is there any case where the WorkManager fails?
+	7. Limit of WorkManager
+ 	8. Activity Lifecycle
+  	9. Activity 'A' is open and Activity 'B' is open then what will the situation of Activity 'A' and Which method gets override
+  	10. I have 2 api and how do you call them parallelly?
 
 MVVM
-	35. What is MVVM
-	36. is worked on Clean Architecture
+	1. What is MVVM
+	2. is worked on Clean Architecture
 
 OOPS
-	37. Solid Principles explain each
+	1. Solid Principles explain each
 
 Git
-	38. How to resolve conflict
-	39. What is Rebase
-	40. what is reset
+	1. How to resolve conflict
+	2. What is Rebase
+	3. what is reset
 
 Jetpack compose
-	41. How to call compose from XML Layout
-	42. How to call XML layout from compose
-	43. How will you Draw a triangle in compose
+	1. How to call compose from XML Layout
+	2. How to call XML layout from compose
+	3. How will you Draw a triangle in compose
 
 DI
   Which DI use?
-	44. Provides Vs Inject (suggestion -> @Bind )
-	45. SingletonComponent Vs ApplicationComponent
-	46. Activity vs Fragment
-	47. AndroidViewModel Vs ViewModel
+	1. Provides Vs Inject (suggestion -> @Bind )
+	2. SingletonComponent Vs ApplicationComponent
+	3. Activity vs Fragment
+	4. AndroidViewModel Vs ViewModel
 
 ========================================================
-48. what will be the output of the code 
+1. what will be the output of the code 
 
 suspend fun test() {
 	val j = viewModelScope.launch {
@@ -75,7 +77,7 @@ suspend fun test() {
         println("TEST 2")
 }
 _______________________________________________________________
-49. Will the following code will work? if not then how to make it workable 
+2. Will the following code will work? if not then how to make it workable 
 class Sol {
     private lateinit var name : String? = null 
     fun ss () {
@@ -84,7 +86,7 @@ class Sol {
 }
 
 _______________________________________________________________
-50. What will be the output if a person is nullable and initiated object
+3. What will be the output if a person is nullable and initiated object
 person.let {
 	println(person.name)
 }
