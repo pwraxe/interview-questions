@@ -168,7 +168,11 @@ fun main() {
 ==ADVANCE CONCEPT
 36. What is Kotlin DSL?
 -> Domain Specific Language
--> Learn More
+-> When you have to solve Domain Specific problems then you use DSL
+-> You can write kotlin code in a  gradle file to collect dependencies in the list for your understanding and use for loop to implemented dependency
+-> OR Such feature which is not available in kotlin language, you can create class, or function for that, that's called DSL
+
+
 
 37. What is inline with noinline parameters?
 -> inline: works on HOF, reduce function call, copy body at caller place
