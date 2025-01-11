@@ -202,7 +202,7 @@ fun main() {
 -> condition statement in kotlin similar to switch in java
 
 44. Explain by keyword in Kotlin.
--> It use to delegation or delete the property
+-> It is used for delegation or delegate the property
 -> Implementation of the interface to another object using by
 -> Transfer ownership to another object
 
