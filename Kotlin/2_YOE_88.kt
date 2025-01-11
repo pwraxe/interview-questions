@@ -169,9 +169,8 @@ fun main() {
 36. What is Kotlin DSL?
 -> Domain Specific Language
 -> When you have to solve Domain Specific problems then you use DSL
--> You can write kotlin code in a  gradle file to collect dependencies in the list for your understanding and use for loop to implemented dependency
--> OR Such feature which is not available in kotlin language, you can create class, or function for that, that's called DSL
-
+-> By Using Kotlin Language Feature (Lambda Expression, Extension Feature, infix etc.) you make your code more readable and more expressive for specific task 
+-> Ex. creating config file, Building UI Layouts, define complex workflow
 
 
 37. What is inline with noinline parameters?
