@@ -72,7 +72,19 @@
 
  
 18. What are some common UI design principles for mobile apps?
--> Simplicity, Consistancy, Feedback, Affordance, Discoverability
+-> Simplicity, Consistency, Feedback, Affordance, Discoverability
+Simplicity ====================> : UI should be clear and simple
+Consistency ===================> : Color, Font, Icons should be the same in all overall
+Instant Feedback or Speed =====> : App should be quick in response of user input and faster in execution
+Responsiveness ================> : App should be responsive for all device and orientation
+User Control ==================> : Give Control to user on app Ex. Button Click, Back Navigation, Change Settings
+Accessibility =================> : App should be accessible for all user including disables and Visually impaired, Support screen reader
+Touch-Friendly UI Elements ====> : Make UI Component large enough that make clickable ex. 48 x 48 dp
+Seamless Onboarding ===========> : Keep quick onboarding of user, allow skip for unnecessary information which they can fill later
+Animations ====================> : Use animation to enhance user experience
+
+
+
 
 
 19. How can you improve the performance of an Android app’s UI?
