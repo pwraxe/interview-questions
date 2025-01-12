@@ -84,11 +84,15 @@ Seamless Onboarding ===========> : Keep quick onboarding of user, allow skip for
 Animations ====================> : Use animation to enhance user experience
 
 
-
-
-
 19. How can you improve the performance of an Android app’s UI?
 -> Uses of Lint Tool | By Reducing Layout Heirarchi | Using RecyclerView | Optimizing Animation and Transition | Using SVG instead of Image
+
+Optimize Layouts          : Avoid deeply nested layouts, and nested scroll, as they slows render ui
+Efficient Use of Views    : Reduce No of Views, Use RecycleView for Large Dataset,
+Optimize Images           : Avoid large images for loading, Use Glide and Picasso for Image loading and caching, USe SVG at possible
+Avoid UI Thread Blocking  : Avoid the task that block the main UI, use background task and service
+Memory Management         : Avoid Memory Leaks, Using tools like LeakCanary, and Avoid unnecessary Object Creation
+Profile and Monitor Performance: Use Android Profiler to check CPU uses and Memory consumption
 
 
 20. What is the purpose of the “dp” (density-independent pixel) unit in Android?
