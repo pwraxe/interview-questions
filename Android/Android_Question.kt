@@ -180,7 +180,7 @@ UJNHL
 -> It provides the platform that runs Java bytecode
 -> This used to execute Android application
 -> DVM is Optimized for mobile devices and focuses on memory and performance
--> JavaCode -> (JVM) -> ByteCode -> (DexCompiler) -> Dalvik Bytecode -> DVM
+-> JavaCode -> (JVM) -> ByteCode -> (DexCompiler) -> Dalvik Bytecode -> (DVM) -> ART
 
  
 27. What is Android runtime?
