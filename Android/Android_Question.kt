@@ -212,6 +212,17 @@ Uses
 
 30. Fragment Lifecycle
 -> onAttach() -> onCreate() -> onCreateView() -> onActivityCreated() -> onStart() -> onResume() -> onPause() -> onStop() -> onDestroyView() -> onDestroy() -> onDetach()
+onAttach()	: Attach to Activity
+onCreate() 	: Fragment created but not views
+onCreateView() 	: Fragment View is created, you can inflate the layout here
+onActivityCreated(): Activity's onCreate() method has been completed
+onStart()	: Fragment becomes visible to the user
+onResume()	: Fragment is active and interacting to the user
+onPause()	:  Fragment goes background
+onStop()	: Fragment no longer visible
+onDestroyView()	: Fragment view is being destroyed, usually remove or replace
+onDestroy()	: Fragment is destroyed and No longer part of Activity
+onDetach()	: Fragment is detached from its activity.
 
 
 31. What’s RecyclerView in Android & How it works?
