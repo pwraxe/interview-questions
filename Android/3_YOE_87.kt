@@ -252,9 +252,26 @@ DIFF
 
 
 44. How do you perform a database migration in Room?
--> By Migration class
--> object: Migration() {... }
+-> 2 Ways of Migration in Room Database
+1. Auto Migration
+    -> add Param in @Database (autoMigrations = [AutoMigration(from = 1, to = 2, spec = MyDatabase.MyMigration::class)])
+    -> Create a Nested class called `class MyMigration: AutoMigrationSpec` annotate with @RenameTable("MySQL Query ...")
 
+2. Manual Migration
+
+    -> val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("MySQL Query")
+            }
+        }
+
+        When Creating Instance of Roomdatabase, just call
+        Room.addMigration(MIGRATION_1_2).build()
+
+
+
+
+        
 
 45. What is SharedPreferences, and when would you use it?
 -> SharePreferance is light weight way to store persistance data
