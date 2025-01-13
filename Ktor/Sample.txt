@@ -1,0 +1,152 @@
+ Ktor
+
+1. What is Ktor
+-> Ktor is asynchronous framework for building application in kotlin
+-> It use to create client side and server side web application
+
+
+2. What are the primary modules of Ktor?
+-> Ktor Server: For building backend services.
+-> Ktor Client: For making HTTP requests to other services.
+
+
+3. How does Ktor differ from traditional Java web frameworks?
+-> Ktor is lightweight, Kotlin-Native, asynchronous by default, allow devs to include what it needs
+
+4. What is the importance of Application in Ktor?
+-> Entry point of Ktor application | manage module and confugure app lifecycle | 
+
+5. What is an Application module in Ktor?
+-> Aplication Module is Extension function which organized and configure feature or routing
+-> install(StatusPage, Authentication, Autherization, Logging, ContentNegotiation, HttpTimeout)
+
+6. How do you define a routing block in Ktor?
+-> routing {}
+
+7. What is call in Ktor?
+ call represents the client's HTTP request and response 
+
+8. What are some common Ktor features?
+-> Routing
+-> Content negotiation
+-> Authentication
+-> Sessions
+-> WebSockets
+-> CORS
+
+
+9. How do you handle JSON serialization in Ktor?
+-> @Serializable annotation in class
+
+
+10. How can you add custom headers in Ktor?
+-> call.response.headers.append("X-Custom-Header", "Value")
+
+11. What is the role of install in Ktor?
+-> Enable plugin require for ktor codebase
+
+12. What is Ktor’s coroutine model?
+-> Ktor is asynchronous, and uses kotlin coroutine
+
+13. How can you handle exceptions globally in Ktor?
+install(StatusPages) {
+	exceptions<Exception> {
+		...
+	}
+}
+
+
+14. Explain Ktor's call.respond() and call.respondText() functions.
+
+
+15. What is embeddedServer in Ktor?
+-> It use to start servdr programatically with specified engine like Netty, Jetty
+-> embeddedServer(Netty, port = 8080, module = Application::module).start(wait = true)
+
+
+17. What are pipelines in Ktor?
+-> Series of steps through ktor process request and response
+
+19. How do you configure logging in Ktor?
+-> install(CallLogging)
+
+20. What are interceptors in Ktor?
+-> Modify request and response at different stage of pipeline
+
+
+21. How do you implement authentication in Ktor?
+-> install(Authentication) {
+		basics("my-basic") {
+			vaidate {
+				if(valid) OK else null
+			}
+		}
+	}
+
+	authentication("my-basic") {
+		get {
+
+		}
+	}
+
+
+22. How do you create a REST API with Ktor?
+-> routing, call http methods (get{}, post{} etc.)
+
+
+23. What is Ktor's CORS feature?
+allows a web application running on one domain to access resources from a different domain
+-> Install(CORS) {
+	allowHost("https:://ss.com")
+	allowHeader()
+	allowMethod()
+}
+
+
+26. What engines are supported by Ktor?
+-> Netty, Jetty, CIO (Coroutine Base I/O), TomCat
+
+
+27. What is a plugin in Ktor?
+ContentNegotiation, CORS, Authentication, StatusPages, 
+
+28. How do you secure a Ktor application?
+use feature like Authentication, config HTTPS
+
+
+31. How do you configure HTTPS in Ktor?
+-> Configure HTTPS using the embeddedServer function and SSL/TLS settings:
+-> SSL : Secure Sockets Layer 
+-> TLS : Transport Layer Security
+ 
+
+32. How do you use parameters in Ktor routes?
+-> get("user/{id}") {
+	val id = call.parameters["id"]
+}
+
+
+33. How do you send cookies in Ktor?
+-> call.response.cookies.append(Cookie("name", "value"))
+
+34 .How would you implement rate limiting in Ktor?
+USe middleware or plugin to keep track or record of request based on IP can restrict
+
+35. How would you integrate Ktor with a database?
+I used ktorm
+
+36. How do you implement file download in Ktor?
+-> call.respondOutputStream {
+	write(File().readByte())
+}
+
+
+37. How would you handle versioning in a Ktor API?
+-> handle in routing get("/v1/users")
+
+
+38. How do you log incoming and outgoing HTTP requests in Ktor?
+install(CallLogging) {
+	level = Level.INFO
+}
+
