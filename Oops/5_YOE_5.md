@@ -84,7 +84,14 @@ class LoginViewModel: ViewModel() {
   --> Repository Pattern in Android
   --> Using Repository, ViewModel know it is getting data but dont know from where (from room or api call or other src)
 ```
-
+---
+### 5. Why are classes final by default in Kotlin?
+```
+- Kotlin encourage composition over inheritance,
+- prevent fragile base class problems, and make code safer, more predictable, and easier to maintain,
+- Unintended inheritance
+- prevent fragile base class problems (Changes in parent class can unexpectedly break or cause bugs in subclasses)
+```
 
 
 
