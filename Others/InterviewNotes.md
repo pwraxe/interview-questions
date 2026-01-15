@@ -1,23 +1,39 @@
-# 1. Study Plan for Kotlin, Android, and Related Topics
+## During Practicing Again
+- Dependency injection
+- Coroutine
+- Retrofit
+- Security
+- Memory Managerment
+- Profiler
+- Repository Pattern
+
+--- 
+
+1. Study Plan for Kotlin, Android, and Related Topics
 
 - 100 top-quality Kotlin Interview Questions for 1 Year of Experience with answer
 - 100 top-quality Kotlin Interview Questions for 2 Years of Experience with an answer
 - 100 top-quality Kotlin Interview Questions for 3 Years of Experience with answer
+- 100 top-quality Kotlin Interview Questions for 4 Years of Experience with answer
+- 100 top-quality Kotlin Interview Questions for 5 Years of Experience with answer
 
 ---
 
 - 100 top-quality Kotlin Oops Interview Questions for 1 Year of Experience with answer
 - 100 top-quality Kotlin Oops Interview Questions for 2 Years of Experience with answer
 - 100 top-quality Kotlin Oops Interview Questions for 3 Years of Experience with answer
+- 100 top-quality Kotlin Oops Interview Questions for 4 Years of Experience with answer
+- 100 top-quality Kotlin Oops Interview Questions for 5 Years of Experience with answer
 
 ---
 
 - 100 top-quality Android Interview Questions for 1 Year of Experience with answer
 - 100 top-quality Android Interview Questions for 2 Years of Experience with answer
 - 100 top-quality Android Interview Questions for 3 Years of Experience with answer
+- 100 top-quality Android Interview Questions for 4 Years of Experience with answer
+- 100 top-quality Android Interview Questions for 5 Years of Experience with answer
 
---- 
-
+---
 - Android Interview Question From Fresher to 4 Years of Experience (ChatGPT)
 - Kotlin Interview Question from Fresher to 4 Years of Experience (ChatGPT)
 
