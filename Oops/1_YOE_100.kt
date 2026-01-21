@@ -4,14 +4,14 @@
 
 
 2. What are the four basic OOP principles? (A, E, I, P)
-  - Abstraction: Hiding internal details and expose only nesesory part
-  - Encapsulation: Privatising properties and expose them via read only methods
-  - Inheritance: (Parent Child Relationship) Parent class extends to child to let reuse state and behaviour of parent class
-  - Polymorphism: (Many-Form) Allow to override or overload methods in class
+  - Abstraction: Hiding internal details and exposing only the necessary part
+  - Encapsulation: Privatising properties and exposing them via read-only methods
+  - Inheritance: (Parent Child Relationship) Parent class extends to the child to reuse the state and behaviour of the parent class
+  - Polymorphism: (Many-Form) Allow to override or overload methods in a class
 
 
 3. What is a class in Kotlin?
-  - Class is blueprint of an object which has declaration of states and behaviour
+  - A class is a blueprint of an object that has a declaration of states and behaviour
 
 
 4. How do you define a class in Kotlin?
@@ -20,7 +20,7 @@
 
 
 5. What is an object in Kotlin?
-  - Object is an instance of class which has actual states and behaviour
+  - An object is an instance of a class that has actual states and behaviour
 
 
 6. How do you create an object in Kotlin?
@@ -28,58 +28,58 @@
   
   
 7. What is a constructor in Kotlin?
-  - It is special member function which use to create an object
+  - It is a special member function which use to create an object
 
 
 8. What is the primary constructor in Kotlin?
-  - Primary constructor is define at class header, and properties initialized instantly
-  - Properties in primary constructor can be set private or public
+  - Primary constructor is defined at the class header, and properties are initialized instantly
+  - Properties in the primary constructor can be set private or public
 
 
 9. What are secondary constructors in Kotlin?
-  - Secondary constructor is special member function which use to initilized object of a class,
-  - This written inside class and has constructor keyword and it requires primary constructor if primary exists
+  - Secondary constructor is a special member function which is used to initilized object of a class,
+  - This is written inside a class and has a constructor keyword, and it requiresa  primary constructor if primary exists
 
 
 10. What is an init block in Kotlin?
-  - It is use to initilized objects or states before constructor calls
-  - It calls after primary constructor property initialized
+  - It is used to initialize objects or states before constructor calls
+  - It calls after the primary constructor property is initialized
 
 
 11. What is encapsulation?
-  - It restrict the direct access to preventing accidental modification
-  - Its properties are private by default, and can be expose via public method of that class
+  - It restricts direct access to prevent accidental modification
+  - Its properties are private by default, and can be exposed via a public method of that class
 
 
 12. How does Kotlin support encapsulation?
   - By Visibility Modifiers (Private, Public, Protected, Internal)
-  - Immutable Variable declaration, which leads to read only properties
-  - By genrating getter setter, it reduces boilerplate codes
+  - Immutable Variable declaration, which leads to read-only properties
+  - By generating getter and setter, it reduces boilerplate codes
 
 
 13. What are the visibility modifiers in Kotlin?
-  - In Kotlin we say, Visibility Modifiers
-  - In Java we say, Access Modifiers
-  - Those are: Pulic, Private, Protected, Internal
+  - In Kotlin, we say, Visibility Modifiers
+  - In Java, we say, Access Modifiers
+  - Those are: Public, Private, Protected, Internal
 
 
 14. How do you make a property private in Kotlin?
-  - you make a property private by using the private visibility modifier.
+  - You make a property private by using the private visibility modifier.
   
 
 15. What is a getter in Kotlin?
   - It is a special function used to retrieve the value of a property
-  - Kotlin automatics generates default getter property
-  - You can customized by overriding get() method
-  - It allow to create virtual property, that dont store data but calculate on the fly
-  - if property define by val then only getter is generated
+  - Kotlin automatically generates a default getter property
+  - You can customize by overriding the get() method
+  - It allows creating virtual property that dont store data but calculates on the fly
+  - If the property is defined by val, then only a getter is generated
 
 
 16. What is a setter in Kotlin?
-  - It is special function which use to set new value to property
-  - kotlin internally generates setter to set value for mutable property (Property which declare by `var`)
-  - You have field identifier to set actual value to property to avoid recursion
-  - By using custom setter, you can control setting value or modifying variable
+  - It is a special function which use to set a new value to a property
+  - kotlin internally generates a setter to set the value for a mutable property (a property that is declared by `var`)
+  - You have a field identifier to set the actual value to property to avoid recursion
+  - By using a custom setter, you can control the setting value or modifying variable
 
 
 17. How do you define custom getters and setters in Kotlin?
@@ -99,16 +99,16 @@
 
 
 19. What is inheritance?
-  - It is one of the piller in OOPS
-  - Inheriatance allow parent class to extends its properties and behaviour to child class
-  - it defines IS-A relationship
-  - Kotlin classes are final by default hence for inheritance class need to open to extend
+  - It is one of the pillars of OOPs
+  - Inheriatance allow parent class to extend its properties and behaviour to the child class
+  - It defines an IS-A relationship
+  - Kotlin classes are final by default, hence an inheritance class needs to be open to extend
 
   
 20. How do you implement inheritance in Kotlin?
   - Every class in kotlin is final by-default, 
-  - To achive Inheritance, we must open class to extend
-  - It uses colon to extend Parent class to child class
+  - To achieve inheritance, we must open the class to extend
+  - It uses a colon to extend Parent class to child class
   - open class Child: Parent() { ... }
 
   
@@ -130,19 +130,19 @@
 
 
 25. How do you override a method in Kotlin?
-  - classes and methods are final by default, mark them open to extend there behaviours
-  - use open keyword in front of method name to override method in subclass
+  - classes and methods are final by default, mark them open to extend their behaviours
+  - use open keyword in front of the method name to override the method in a subclass
 
 
 26. Can you override properties in Kotlin?
-  - Yes we can, 
-  - just open property to override
+  - Yes, we can, 
+  - just open the property to override
 
 
 27. What is the `super` keyword in Kotlin?
-  - super keyword use to call parent class member function or properties
+  - super keyword used to call the parent class member function or properties
   - super() is used to call a specific constructor of the parent class.
-  - In case of multiple inheritance, it use to specify which  parent class method is calling, (to avoid Ambiguity)
+  - In case of multiple inheritance, it is used to specify which  parent class method is calling (to avoid Ambiguity)
 
   
 28. Can Kotlin inherit from multiple classes?
@@ -151,18 +151,18 @@
 
 29. What is polymorphism?
   - Poly-Many, Morphism-Form
-  - Its ability to take multiple form
+  - Its ability to take multiple forms
   - Compile Time polymorphism: Method overloading
   - Runtime Polymorphism: Method overriding
 
 
 30. What is method overriding?
-  - When Parent class method writes in subclass with same function name and signature called overrides
+  - When a parent class method is written in a subclass with the same function name and signature called overrides
   - A subclass providing its own implementation of a parent method
 
 
 31. What is method overloading?
-  - When single class has multiple methods with same name and different parameters, then function gets overloaded
+  - When a single class has multiple methods with the same name and different parameters, then the function gets overloaded
 
 
 32. How do you achieve polymorphism in Kotlin?
@@ -170,8 +170,8 @@
 
 
 33. What is dynamic polymorphism in Kotlin?
-  - It is also called as Runtime polymorphism, o
-  - It achive through method overriding
+  - It is also called Runtime polymorphism, or
+  - It achieves this through method overriding
 
 
 34. What is static polymorphism in Kotlin?
@@ -182,61 +182,97 @@
 35. What is abstraction in Kotlin?
   - In Kotlin, abstraction is the concept of hiding complex implementation details and exposing only the essential features of an object.
   - It defines what an object does instead of how it does it.
-  - It primarily achive by abstract classes and interface
+  - It is primarily achieved by abstract classes and interfaces
 
   
 36. How do you implement abstraction in Kotlin?
-  - abstraction is implemented using abstract classes and interfaces. 
+  - Abstraction is implemented using abstract classes and interfaces. 
   - Both allow you to define blueprints that other classes must follow.
   - Abstract classes are used when you want to provide a common base with shared state (properties) and behavior for related classes
 
 
 37. What is an abstract class in Kotlin?
-  - Classes which declare using abstract keyword to class level
-  - and if member and properties if abstract then class becomes abstract
-  - It is partially implemented blueprint of a class
-  - You cannot create instant of an abstract class, it should inherited
+  - Classes that declare using the abstract keyword at the class level
+  - and if member and properties are abstract, then the class becomes abstract
+  - It is a partially implemented blueprint of a class
+  - You cannot create instant of an abstract class, it should be inherited
   - abstract class are open by default
 
 
 38. How do you define an abstract class in Kotlin?
-  - by using abstract keyword at class level
+  - by using an abstract keyword at the class level
   - a class declared as abstract in Kotlin even if it contains no abstract methods or properties
 
 
 39. What is an abstract method?
-  - method which is declared as an abstract with no method implementation at abstract class
+  - A method that is declared as an abstract method with no method implementation at abstract class
   - abstract class Solution {
       abstract fun primarySolution() 
   }
   
 
 40. Can you create an instance of an abstract class?
-  - No We cant create instant of abstract class, if we create then there is no implementation of abstract method
+  - No, We cant create instant of an abstract class, if we create then there is no implementation of the abstract method
   - You cannot create a direct instance of an abstract class in Kotlin because it is considered an "incomplete" blueprint
 
 
 41. Can an abstract class have a constructor in Kotlin?
+  - We don't have instant of an abstract class, but we can havea  primary & secondary constructor of an abstract class.
+  - Those need to be initialized as non-abstract properties or behaviour
+  
 
 42. What is the difference between an abstract class and an interface?
+  - Abstract class: 
+       = It can hold state using baking fields
+       = It can have a primary and a secondary constructor
+       = Supports single inheritance
+       = Members can have different visibility modifiers (Private, Public, Protected, Internal)
+       = It requires an abstract keyword to declare a class as an abstract class 
+      
+  - Interface:
+       = It dont have states, they are declared properties
+       = It dont have a primary and secondary constructor
+       = IT supports multiple inheritance (multiple classes can implement a single interface)
+       = Properties and methods are abstract by default and public too
+
 
 43. What is an interface in Kotlin?
+  - It is custom types that serve as a blueprint or contract to classes that follow.
+  - properties and methods are abstract by default
+  - In the latest kotlin version, methods can have a body, and such methods are optional to override
+  - An interface that has a single abstract method can be declared as a `fun interface`.
+  
 
 44. How do you define an interface in Kotlin?
+  - By using the interface keyword
+  - interface HomeMap { ... }
+
 
 45. How do you implement an interface in Kotlin?
+  - By using the implement keyword next to the class name
+
 
 46. Can interfaces have properties in Kotlin?
+  - Yes, but without backing fields
+  
 
 47. Can interfaces have method implementations in Kotlin?
+  - Yes, Interface has method implementation in kotlin
+  
 
 48. Can a class implement multiple interfaces in Kotlin?
+  - Yes,
 
+  
 49. What is a marker interface in Kotlin?
+  - An interface that does not have properties and behaviour
+
 
 50. What is a sealed class in Kotlin?
+  - A sealed class is a collection of subclasses that restricts the hierarchy of inheritance
 
 51. How do you define a sealed class in Kotlin?
+  - by using the sealed keyword
 
 52. What is the advantage of using a sealed class?
 
@@ -339,4 +375,5 @@
 99. What is reflection in Kotlin?
 
 100. How do you access class metadata in Kotlin?
+
 
