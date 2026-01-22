@@ -77,7 +77,8 @@
 39. How do you define a companion object in Kotlin?
   
 40. What is the `lateinit` keyword in Kotlin?
-  
+  UninitializedPropertyAccessException
+
 41. What are Kotlin's `object` declarations?
 
 42. How do you define a singleton in Kotlin?
@@ -197,3 +198,4 @@
 99. What is `Unit` in Kotlin?
 
 100. What is the `Any` type in Kotlin?
+
