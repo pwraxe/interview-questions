@@ -275,6 +275,10 @@
   - by using the sealed keyword
 
 52. What is the advantage of using a sealed class?
+  - Restricted Inheritance: It allows you to define which classes can extend
+  - Compile-time Safety: The compiler knows all possible subclasses at compile time
+  - Exhaustive Checks (No 'Else' needed): Compiler knows as subclasses, hence in conditional checks, like when no else needed
+  - State Management: All subclasses has it's own unique states (Properties). 
 
 53. What is delegation in Kotlin?
 
@@ -375,5 +379,6 @@
 99. What is reflection in Kotlin?
 
 100. How do you access class metadata in Kotlin?
+
 
 
