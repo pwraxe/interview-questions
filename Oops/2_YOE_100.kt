@@ -174,9 +174,11 @@
 87. What is the `runBlocking` function in Kotlin?
   
 88. What are Kotlin Flows?
+  - an asynchronous data stream that can emit multiple values sequentially over time
   
 89. How do you declare a Kotlin Flow?
-  
+  flow { ... } builder, the flowOf() function, and the asFlow() extension function
+
 90. What is a `collect` function in Kotlin Flow?
   
 91. What is the difference between `launch` and `async` in Kotlin Coroutines?
@@ -198,4 +200,5 @@
 99. What is `Unit` in Kotlin?
 
 100. What is the `Any` type in Kotlin?
+
 
