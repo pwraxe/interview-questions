@@ -3,7 +3,7 @@ Tell me about your career and background
 
 OOPS
 =====
-What is Oops Pillers, explain all
+What is Oops Pillers? Explain all
 explain Multiple inheritance (For Java Explained, For kotlin has no such privilege, and explained why)
 What are visibility modifiers in Java
 Explain private vs public vs protected
@@ -35,7 +35,7 @@ Have you worked in a team?
 Problem
 =======
 /*
- * Problem: Suppose a list of users is given, which has 3 Parameter (id, name, isActiveStatus),
+ * Problem: Suppose a list of users is given, which has 3 parameters (id, name, isActiveStatus),
  * You have to return active users only (IN JAVA)
  *
  * My thought process:
