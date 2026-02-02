@@ -19,16 +19,16 @@
 
 
 3. data class in kotlin
--> data class is primarily used to hold the data
--> compiler auto generates member function to print data class instance to a readable format
--> data class created using data keyword 
--> This class has equals, toString, hashcode and copy method
--> Data class requiers min 1 param in its constructor
+-> The data class is primarily used to hold the data
+-> compiler auto-generates a member function to print a data class instance to a readable format
+-> data class created using the data keyword 
+-> This class has equals, toString, hashCode, and a copy method
+-> Data class requiers min 1 parameter in its constructor
 
 
 4. Extension Function
 -> This is kotlin feature
--> This is a normal kotlin function but it is defined/declared outside the class but also a member of the class
+-> This is a normal kotlin function, but it is defined/declared outside the class, and also a member of the class
 -> Such a function extends the functionality of the existing class
 -> Such a function/feature does not disturb the existing flow of the feature or source code
 
@@ -40,7 +40,7 @@
 
 
 6. Explain Kotlin Null Safety
--> Kotlin Does not support null by default,
+-> Kotlin does not support null by default,
 -> Explicitly, we have to make the value as null
 -> Safe Call, Elvis, and Assertion are ways to handle null
 
@@ -88,9 +88,10 @@
 
 
 14. What is a lateinit property?
--> Lateinit is keyword in kotlin 
+-> Lateinit is a keyword in kotlin 
 -> Use to declare a mutable variable in kotlin as a class property
 -> We assure the compiler that the variable will be initialized late before accessing it
+-> If we access before initialization, then we will get `UninitializedPropertyAccessException`
 
 
 15. What is a backing field in Kotlin?
@@ -100,8 +101,8 @@
 
 
 16. How do you create a singleton in Kotlin?
--> 2 Different ways to create Singleton
--> 1. By object keyword, 2. By companion object in class OR by Traditional Java Way (Like Room database instance)
+-> 3 Different ways to create a Singleton
+-> 1. By object keyword, 2. By a companion object in class 3. By the traditional Java Way (like a Room database instance)
  
 
 17. What is destructuring in Kotlin?
@@ -112,7 +113,7 @@
 18. What is an inline function in Kotlin?
 -> This is a normal function with inline keywords, 
 -> inline function improves performance by reducing overhead function calls
--> inline function copy its body at caller place during compile time
+-> inline function copies its body at the caller's place during compile time
 
 
 19. What is the purpose of `with` in Kotlin?
@@ -126,11 +127,11 @@
 20. What are Coroutines in Kotlin?
 -> Coroutine is a concurrency design pattern
 -> It helps the developer to write asynchronous code without blocking the main thread
--> We Can start the coroutine in 2 ways first by launch block and other by async block,
--> We can expect data back to the caller from async but not launch
--> async returns the Deferred object and gets data using the await method calling
--> Couroutine also has a suspend function, the same as the normal function with the suspend keyword
--> Launching coroutine returns Job Object where we can control coroutine 
+-> We can start the coroutine in 2 ways: first by launch block and second by async block,
+-> We can expect data back to the caller from async, but not launch
+-> async returns the Deferred object and gets data using the await method, calling
+-> Coroutine also has a suspend function, the same as the normal function with the suspend keyword
+-> Launching a coroutine returns a Job Object, where we can control the coroutine 
 -> We can start, pause, stop, and cancel the coroutine via the job object
 -> Coroutine launch on Default dispatcher 
 
@@ -140,29 +141,36 @@
 22. How can you handle exceptions in Kotlin?
 
 
-23. Explain the use of when expression in Kotlin.
+23. Explain the use of the when expression in Kotlin.
 -> When is the same as a switch case statement in Java
 -> We can use when as an expression to return the result
--> We can use different types of conditions to when the expression
--> When has else condition instead of default in switch
+-> We can use different types of conditions in the when expression
+-> When has an else condition instead of a default in a switch
 
 
 24. What is a type alias in Kotlin?
--> This provides an alternative name for existing data types or function
+-> This provides an alternative name for existing data types or functions
+-> typealias TriplePairMap = HashMap<Pair<Int, String>, Triple<Int, String, Char>>
+   fun getRes(map: TriplePairMap) {}
 
 
 25. What is smart casting in Kotlin?
 -> Smart cast is a compiler that automatically casts an object 
 -> After checking null in the if condition, the null variable will become a non-null variable
+-> var name: String? = null
+-> if(name != null) {  name becomes non-null }
+-> name?.let {
+     Due to safe call, let return it as a non-null param
+   }
 
 
 26.  What is a tail-recursive function in Kotlin?
 -> To avoid stackoverflow errors in kotlin during the recursive function call
--> `tailrec` keyword is added at the function
+-> `tailrec` keyword is added to the function
 
 
 27. What are generics in Kotlin?
--> Generics allowed to work with any datatype on method, classes or variable 
+-> Generics allowed to work with any datatype on methods, classes, or variables 
 -> It checks compile-time type safety to work with different types of data
 
 
@@ -176,7 +184,7 @@
 
 
 31. What are default arguments in Kotlin?
-
+-> 
 
 32. lateinit vs lazy
 
@@ -187,7 +195,7 @@
 
 
 34. What is the use of filter, map, and reduce in Kotlin collections?
--> filter is used for extracting elements from the list based on condition
+-> filter is used for extracting elements from the list based on a condition
 -> map is used to transform objects into another format 
 -> Reduce is used to combine results in a single unit
 
@@ -198,13 +206,13 @@
 
 40. What is the difference between a fun interface and a regular interface?
 -> fun interface is SAM (Single Abstract Method)
--> IT helps to write an anonymous function to Lambda Expression
+-> IT helps to write an anonymous function as a Lambda Expression
 
 41. What is a marker interface in Kotlin?
--> Marker interface is a special type of interface that doesn't have property and method declaration 
--> IT use to make class special for certain requirements 
+-> Marker interface is a special type of interface that doesn't have property and method declarations 
+-> IT uses to make classes special for certain requirements 
 -> interface Premium
--> class Account: Premium  (You can create an object and save to the Premium interface so the account will change to premium)
+-> class Account: Premium  (You can create an object and save to the Premium interface so the account will change to Premium)
 
 ========================================================================================================================
  1. What is Kotlin?
@@ -353,7 +361,7 @@ fun show(vararg nums: Int)
 
 67. What is the use of sealed in Kotlin?
 
-68. What is inline property?
+68. What is an inline property?
 
 69. What is a unit in Kotlin?
 
@@ -371,7 +379,7 @@ fun show(vararg nums: Int)
 
 76. What is the difference between suspend and blocking functions?
 
-77. What is the default visibility modifier in Kotlin?(public)
+77. What is the default visibility modifier in Kotlin? (public)
 
 78. How to convert a Kotlin String to a CharArray? ("aa".toCharArray())
 
@@ -381,7 +389,7 @@ fun show(vararg nums: Int)
 
 81. What is the difference between let and run?
 
-82. How to convert a String to List of characters?
+82. How to convert a String to a List of characters?
 
 83. What are infix functions?
 
@@ -414,7 +422,7 @@ fun show(vararg nums: Int)
 -> listOf(1, 2, 2, 3).toSet()
 
 97. What is flow in Kotlin?
--> Stream of data asynchronusly
+-> Stream of data asynchronously
 
 98. What is coroutineScope in Kotlin?
 
