@@ -46,7 +46,7 @@
 
 14. What is the let function in Kotlin?
 -> Let is scope function
--> Ideally, it runs ona  nullable variable if it is not null
+-> Ideally, it runs on a nullable variable if it is not null
 -> It casts the null variable to not null for data
 -> It provides it as the current scope context
 
@@ -109,7 +109,7 @@
 
 25. What is withContext in Kotlin?
 -> It is a suspend function used to switch the context of the coroutine from one dispatcher to another
--> It can be called from either coroutine scope or other suspend function
+-> It can be called from either coroutine scope or another suspend function
 -> IT uses a dispatcher to switch the context
 
 ==KOTLIN COLLECTIONS
@@ -197,17 +197,17 @@ fun main() {
 
 
 41. What is a range in Kotlin?
--> sequence of values from start to end and it is define by .. operator
+-> sequence of values from start to end, and it is defined by the .. operator
 
 42. What is the difference between == and === in Kotlin?
 ==: Structural Equality, ===: Refrancial Equality
 
 43. What is when in Kotlin?
--> condition statement in kotlin similar to switch in java
+-> condition statement in kotlin similar to switch in Java
 
 44. Explain by keyword in Kotlin.
 -> It is used for delegation or delegate the property
--> Implementation of the interface to another object using by
+-> Implementation of the interface to another object used by
 -> Transfer ownership to another object
 
 
@@ -224,12 +224,12 @@ fun main() {
 -> try-catch-finally
 
 46. What is an infix function in Kotlin?
--> such function removes dot and parenthesis at caller's place of the object
+-> such a function removes dots and parentheses at the caller's place of the object
 
 47. What is the use of is keyword in Kotlin?
--> It uses to check the data type of a variable or object
+-> It is used to check the data type of a variable or object
 -> It checks whether a variable or object is an instance of a certain type or not
--> It helps to smart cast object
+-> It helps to smart cast objects
 
 
 48. How do you create an array in Kotlin?
