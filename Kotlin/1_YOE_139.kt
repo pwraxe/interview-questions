@@ -29,19 +29,19 @@
 4. Extension Function
 -> This is kotlin feature
 -> This is a normal kotlin function but it is defined/declared outside the class but also a member of the class
--> Such function extends the functionality of the existing class
--> Such function/feature does not disturb the existing flow of feature or source code
+-> Such a function extends the functionality of the existing class
+-> Such a function/feature does not disturb the existing flow of the feature or source code
 
 
-5. Lamda Expression
--> This is an anonymous or Lamda function without a name
+5. Lambda Expression
+-> This is an anonymous or Lambda function without a name
 -> We can pass a lambda expression to other functions as a parameter 
--> Lambda expression can be assigned to a variable
+-> A lambda expression can be assigned to a variable
 
 
-6. Explain Kotlin Null Safty
+6. Explain Kotlin Null Safety
 -> Kotlin Does not support null by default,
--> Explicitly we have to make the value as null
+-> Explicitly, we have to make the value as null
 -> Safe Call, Elvis, and Assertion are ways to handle null
 
 
@@ -49,37 +49,41 @@
 
 
 8. Explain the concept of a companion object.
--> Companion Object is Directly tied to Class not an instance hence We can directly access method and class fields by class name
--> COmpanion Objects are Singleton by default
--> Only one COmpanion Object is allowed per class, Not even different name is allowed
+-> Companion Object is directly tied to Class, not an instance, hence we can directly access methods and class fields by class name
+-> Companion Objects are Singleton by default
+-> Only one Companion Object is allowed per class, not even a different name is allowed
 
 
 9. What is a higher-order function?
--> The function which takes the normal function or lambda function as an argument and
--> The function which returns the normal function or lambda function as a result are called HOF
+-> The function that takes the normal function or a lambda function as an argument and
+-> The function that returns the normal function or lambda function as a result is called HOF
 -> Lambda functions are frequently sent as an argument
 
 
 10. What is the difference between val and var?
+ - Both use to declare varaiable
+ - Primary diff. is mutability
+ - val: Read-only / Immutable / Equivalent to final
+ - var: Read-Write Only / Mutable / 
 
 
 11. What are sealed classes in Kotlin?
--> Sealed class are declared using the sealed keyword before the class keyword
+-> Sealed classes are declared using the sealed keyword before the class keyword
 -> Sealed class is a collection of subclasses
--> Sealed class restrict the hierarchy of inheritance 
+-> Sealed class restricts the hierarchy of inheritance 
 -> Compiler knows hierarchy of sealed class at compile time
--> Sealed class can extend to other sealed class
+-> Sealed class can extend to other sealed classes
 -> subclass of child sealed class can extend parent sealed class, subclass of parent sealed class
--> Selaed class are internally abstract
+-> sealed class are internally abstract
 
 
-12. How are object and class different in Kotlin?
+12. How are objects and classes different in Kotlin?
 -> Class is the blueprint of an instance of that class
--> Object is use for creating a single instance of class it is a Singleton instance
+-> Object is used for creating a single instance of a class; it is a Singleton instance
 
 
 13. What is the init block in Kotlin?
--> init is a block is use to initialise class properties
+-> init is a block used to initialise class properties
 -> inti block called before class constructor
 
 
