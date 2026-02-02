@@ -17,7 +17,7 @@
 ==OOP
 
 6. What is an object in Kotlin?
--> Instance of that class which contains actual data and behaviour of that class
+-> An instance of that class that contains actual data and behaviour of that class
 
 7. What are the types of constructors in Kotlin?
 -> Primary and Secondary
@@ -25,14 +25,14 @@
 8. Explain the data class in Kotlin.
 
 9. What is the sealed class in Kotlin?
--> Restrict Inheritance Hierarchy, Compiler knows all hierarchy at compile time, sealed keyword, Should be in same file
+-> Restrict Inheritance Hierarchy, Compiler knows all hierarchy at compile time, sealed keyword, Should be in the same file
 
 10. What is the object keyword used in Kotlin?
 -> Object is a Special keyword in kotlin 
 -> It acts like a static in Java
--> We can directly access properties and methods directly object name
--> It is singleton by default
--> It is used to create singleton objects, declare anonymous classes and object expression
+-> We can directly access properties and methods by object name
+-> It is a singleton by default
+-> It is used to create singleton objects, declare anonymous classes, and object expressions
 
 ==FUNCTIONAL
 
@@ -42,12 +42,12 @@
 12. What is an extension function in Kotlin?
 
 13. What is the lambda expression in Kotlin?
--> lambda function which can pass as arg or assign to a variable
+-> lambda function which can be passed as arg or assigned to a variable
 
 14. What is the let function in Kotlin?
 -> Let is scope function
--> Ideally it runs on nullable variable if it is not null
--> It cast the null variable to not null for data
+-> Ideally, it runs ona  nullable variable if it is not null
+-> It casts the null variable to not null for data
 -> It provides it as the current scope context
 
 15. What are inline functions in Kotlin?
@@ -55,11 +55,11 @@
 -> It reduces calling the same function again and again
 -> It improves performance and reduces memory occupation
 
-==NULL SAFTY
+==NULL SAFETY
 16. How does Kotlin handle null values?
 -> Kotlin does not support nullability by default
 -> We have to make variables nullable explicitly
--> If we have a nullable variable then kotlin provides 4 different ways to handle null values
+-> If we have a nullable variable, then kotlin provides 4 different ways to handle null values
 -> 1) Safe Call 2) Elvis Operator 3) Assertion 4) Let Block
 
 17. What is the !! operator in Kotlin?
@@ -67,23 +67,23 @@
 
 18. What is the Elvis operator (?:) in Kotlin?
 -> It is a short syntax to handle the null variable
--> If the nullable variable is not null then it returns as it else returns the default value
--> It is a more clean and concise way to handle nullable variable 
+-> If the nullable variable is not null, then it returns as it returns the default value
+-> It is a cleaner and more concise way to handle a nullable variable 
 
 19. How can you handle null values using safe calls in Kotlin?
 -> ?.
 
-20. What is the purpose of letting in null safety?
--> Let is scope function which gives us `it` as the current scope context.
+20. What is the purpose of let in null safety?
+-> Let is a scope function which gives us `it` as the current scope context.
 -> It executes a block of code only if the nullable variable is not null
--> It cast nullable to non-nullable to safely work on an object
--> It allows us to create weak references of an object
+-> It casts nullable to non-nullable to safely work on an object
+-> It allows us to create weak references to an object
 
 
 21. What are coroutines in Kotlin?
 -> Concurrency Design Pattern, 
 -> Writes Asynchronous code, w/o blocking main thread
--> Lauch Async,
+-> Launch Async,
 -> suspend function
 
 
@@ -108,16 +108,16 @@
 
 
 25. What is withContext in Kotlin?
--> It is a suspend function used to switch the context of the coroutine from one dispatcher to other
--> It can called from either coroutine scope or other suspend function
+-> It is a suspend function used to switch the context of the coroutine from one dispatcher to another
+-> It can be called from either coroutine scope or other suspend function
 -> IT uses a dispatcher to switch the context
 
 ==KOTLIN COLLECTIONS
 
 26. What is the difference between List and MutableList in Kotlin?
--> Both contain homo and heterogeneous element because both accept vararg
--> list is immutable hence we cannot add, remove or update elements from it, It is read-only.
--> mutableLits if mutable hence we can perform CRUD operation on it
+-> Both contain homo and heterogeneous elements because both accept vararg
+-> list is immutable, hence we cannot add, remove, or update elements from it. It is read-only.
+-> mutableLits if mutable, hence we can perform CRUD operations on it
 
 
 27. How do you create an immutable list in Kotlin?
@@ -130,11 +130,12 @@
 
 29. What is the difference between map and flatMap in Kotlin?
 -> Map transforms each element into another object
--> Flatmap convert elements into a single result 
+-> Flatmap converts elements into a single result 
+
 
 fun main() {
     val l1 = listOf(1,2,3)
-    val l2 = listOf("abc","def","ghi")
+    val l2 = listOf("abc", "def", "ghi")
     val res1 = l1.flatMap { l2 } //["abc","def","ghi", "abc","def","ghi", "abc","def","ghi"]
     val res2 = l2.flatMap { l1 } //[1,2,3,1,2,3,1,2,3]
 }
@@ -150,37 +151,40 @@ fun main() {
 
 
 32. What is the difference between lateinit and lazy in Kotlin?
--> lateinit: late initialization, mutable, work only non-null variable,  
+-> lateinit: late initialization, mutable, works only with  non-null variables,  
 -> lazy: delegate property, immutable, work on nullable also
 
 
 33. What is the purpose of a companion object in Kotlin?
--> Creating Static like fields
--> Makeing class singleton
+-> Creating Static-like fields
+-> Making class singleton
 
 34. What is the purpose of @Parcelize in Kotlin?
--> @Parcelize is an Android Annotation that makes data class Parcelable by generating boilerplate code
+-> @Parcelize is an Android Annotation that makes a data class Parcelable by generating boilerplate code
 
 
 35. What is the purpose of @JvmStatic in Kotlin?
 -> Direct Access of method in kotlin who annotate with @JvmStatic from JavaCode 
 
+
 ==ADVANCE CONCEPT
+
 36. What is Kotlin DSL?
 -> Domain Specific Language
--> When you have to solve Domain Specific problems then you use DSL
--> By Using Kotlin Language Feature (Lambda Expression, Extension Feature, infix etc.) you make your code more readable and more expressive for specific task 
--> Ex. creating config file, Building UI Layouts, define complex workflow
+-> When you have to solve Domain Specific problems, then you use DSL
+-> By using Kotlin Language Features (Lambda Expression, Extension Feature, infix, etc.), you make your code more readable and more expressive for a specific task 
+-> Ex. creating a config file, Building UI Layouts, defining complex workflow
 
 
 37. What is inline with noinline parameters?
--> inline: works on HOF, reduce function call, copy body at caller place
+-> inline: works on HOF, reduces function calls, copies body at caller's place
 -> noinline: some param of HOF mark as noinline
+
 
 38. What is the reified keyword in Kotlin?
 -> To retain data info at runtime
--> It uses with inline keyword (inline function)
--> generic param erased info at compile time, to retain we use reified
+-> It uses the inline keyword (inline function)
+-> generic param erased info at compile time, to retain, we use reified
 -> fun <reified T> todo(t:T) {}
 
 
@@ -189,7 +193,7 @@ fun main() {
 
 
 40. What are destructuring declarations in Kotlin?
--> Separating data into variable
+-> Separating data into a variable
 
 
 41. What is a range in Kotlin?
