@@ -21,8 +21,8 @@
 
 ----
 
-**4. How does the init block relate to the primary constructor?
-**- The `init` block is not a separate constructor; it is literally the body of the primary constructor.
+**4. How does the init block relate to the primary constructor?**
+- The `init` block is not a separate constructor; it is literally the body of the primary constructor.
 - The primary constructor cannot contain any code. The init block acts as the execution body for the primary constructor
 - `Sequential Execution:` The order of execution strictly follows the top-down declaration order in the source file. Properties defined above the `init` block will execute first, and properties below the `init` block will no longer be available to the `init` block
 - `Secondary Constructor Delegation:` The init block is guaranteed to execute before the secondary constructor executes.
