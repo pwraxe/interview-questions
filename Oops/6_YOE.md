@@ -148,6 +148,124 @@ var name: String = ""
 
 ----
 
+**17. How does Kotlin handle multiple inheritance?**
+- Kotlin avoids multiple inheritance of state (classes) to bypass the `Diamond Problem` but supports multiple inheritance of behavior through interfaces with default method implementations.
+- Kotlin interfaces can contain executable code. When a class implements multiple interfaces that share conflicting method signatures, the compiler throws a `compile-time error`. 
+- As a developer, we are forced to explicitly resolve the ambiguity by overriding the conflicting method and specifying which interface implementation to invoke using the super-qualified syntax `super<InterfaceName>.method()`
+```
+interface AnalyticsTracker {
+    fun logEvent(name: String) {
+        println("Analytics: Logging $name")
+    }
+}
+
+interface CrashlyticsTracker {
+    fun logEvent(name: String) {
+        println("Crashlytics: Logging $name")
+    }
+}
+
+// Class implementing both interfaces must resolve the conflict explicitly
+class SyncManager: AnalyticsTracker, CrashlyticsTracker {
+
+    override fun logEvent(name: String) {
+        // Explicitly routing the execution path to both interfaces
+        super<AnalyticsTracker>.logEvent(name)
+        super<CrashlyticsTracker>.logEvent(name)
+    }
+}
+```
+
+---
+
+**18. How do you resolve conflicts if two interfaces have the same default method signature?**
+- You must override the method in the child class and explicitly specify which parent to call using `super<InterfaceName>.method()`.
+
+---
+
+**19. What happens if you define a property in a Kotlin interface?**
+- When you declare a property inside a Kotlin interface, it is `stateless` by default.
+- The compiler does not generate a backing field, meaning it cannot store values directly
+- Interface properties cannot have backing fields (they cannot hold state). The implementing class must override the property, or the interface must provide a custom getter.
+- Same as a default interface (interface with body which becomes optional to get override), the default properties also need to be overridden, but getter properties become optional to get override, and it is default accessible 
+```
+interface FeatureConfig {
+    // 1. Abstract property: Implements must provide memory storage
+    val apiKey: String
+
+    // 2. Computed property: Stateless default implementation (No backing field)
+    val isEnabled: Boolean
+        get() = apiKey.isNotBlank()
+}
+
+// Senior Implementation
+class ProductionConfig: FeatureConfig {
+    // Allocates an actual backing field in memory for the interface contract
+    override val apiKey: String = "prod_secret_key_123"
+
+    // isEnabled is automatically available here without overriding it!
+}
+```
+
+----
+
+**20. Can an abstract class implement an interface without implementing its methods?**
+- Yes, because an abstract class is an incomplete blueprint,
+- It can inherit the interface contract and pass the responsibility of implementing those methods down to the first concrete subclass.
+- An abstract class is `50% normal class` and `50% interface`; hence, implementing an `interface` and a `normal class` does not give me an error
+```
+interface OldSol {
+    fun doThis()
+}
+open class LegacySol {
+    fun doThis() {
+        println("❌ This has not been done.")
+    }
+}
+abstract class NewSolution: OldSol, LegacySol() {
+    fun doneThis() {
+        println("✅ This has been done.")
+    }
+}
+```
+----
+
+**21. What is the difference between Any and Any?**
+- The difference between `Any` and `Any?` comes down to Kotlin's root type hierarchy and nullability constraints:
+-  I map this directly to `Java Interoperability` and `Generics`, because `Any?` is the true equivalent of `Java's Object`, because a Java object reference can always be `null`
+- `Any` is the root of all non-nullable types: Every `class` in Kotlin implicitly inherits from `Any`; it cannot hold a `null` value in it.
+- `Any?` is the absolute root of the entire Kotlin type hierarchy: It represents the combination of `Any` + the `null` literal. A variable of type `Any?` can hold absolutely `anything—any object instance`, primitive wrapper, or null.
+
+----
+
+**22. What is the `Nothing` type?**
+- `Nothing` is a special type at the absolute bottom of the type hierarchy.
+- `Nothing` is a subclass of every class in Kotlin. It represents a value that never exists. It is used as the return type for functions that always throw an exception or loop infinitely.
+- `Nothing` has no instances and can never hold a value at runtime.
+- The `null` literal in Kotlin doesn't have a concrete type out-of-the-box. When you declare `val x = null`, the compiler implicitly infers its type as Nothing?.
+- • Nothing is incredibly useful when dealing with covariant generics (out T). Ex. Kotlin's standard library defines `EmptyList` as `List<Nothing>`. Because Nothing is a subtype of every other type, a `List<Nothing>` can be safely cast into expecting a `List<String>`, `List<Int>`, or any custom object without causing type mismatches.
+
+----
+ℹ️ Info: In computer science type theory, there is a concept called a Bottom Type (often represented by the symbol ⊥ or "falsum").
+ℹ️ Nothing does not complete the function and throws an exception; Unit lets the function return control back to the caller
+----
+
+
+**23. What are Anonymous Inner Classes in Kotlin?**
+- They are created using object expressions
+- Unlike Java, Kotlin object expressions can implement multiple interfaces.
+```
+interface Word {
+    fun onWordCheck(isValid: Boolean) 
+}
+//Anonymous Inner Classes in Kotlin
+val isSuccess = object : Word {
+    override fun onWordCheck(isValid: Boolean) {
+        //Check Word : $isValid
+    }
+}
+```
+
 ## Inheritance, Interfaces & Polymorphism
 
 
