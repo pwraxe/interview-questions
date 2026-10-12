@@ -29,7 +29,7 @@
 
 ----
 
-5. What is the difference between a primary and a secondary constructor?
+**5. What is the difference between a primary and a secondary constructor?**
 - A primary constructor is part of the class header
 - A secondary constructor is part of the class body. This must delegate to the primary constructor directly/indirectly using the `this` keyword
 -  In the primary constructor, declaring parameters with `val` or `var` automatically promotes them into class properties.
@@ -251,9 +251,26 @@ abstract class NewSolution: OldSol, LegacySol() {
 - ℹ️ Nothing does not complete the function and throws an exception; Unit lets the function return control back to the caller
 
 ----
+23. Can you override a `val` with a `var` in a subclass?
+- Yes, Kotlin permits overriding a parent `val` property with a child `var` property.
+```
+open class Parent {
+    open val bankName = "RBI"
+    open var accountBal = 0
+}
+class Child: Parent() {
+    //✅ Changing parent `val` to `var` in child class
+    override var bankName: String = "SBI"
+    
+    //❌ If the parent wants to change the value, then we cannot keep it constant
+    //Error Message: Val-property cannot override var-property public open var accountBal: Int defined in Parent
+    override val accountBal: Int = 1000
+}
+```
 
+----
 
-**23. What are Anonymous Inner Classes in Kotlin?**
+**24. What are Anonymous Inner Classes in Kotlin?**
 - They are created using object expressions
 - Unlike Java, Kotlin object expressions can implement multiple interfaces.
 ```
@@ -268,6 +285,21 @@ val isSuccess = object : Word {
 }
 ```
 
-## Inheritance, Interfaces & Polymorphism
+---- 
+
+**25. When should you use a `sealed class` instead of an `enum class`?**
+- Enums contain exactly one instance of each constant.
+- Sealed classes allow subclasses to have multiple instances, different parameters, and entirely different state shapes, making them perfect for representing complex UI States (e.g., Loading, Success(data), Error(exception)).
+- Use `Enum` when you are modeling standard data configurations or fixed types
+- Use `Sealed Class` when you are modeling `business domain` behaviors, `states`, or events that flow through your `Architecture` (e.g., UiState, NavigationEvent, WebSocketMessage).
+
+----
+
+**26. What are sealed interfaces and why were they introduced?**
+- `Sealed interfaces` are restricted interfaces whose implementations must be declared within the same compilation unit and package.
+-  Since Kotlin 1.5, they serve as the exact structural equivalent of sealed classes but carry all the native behavioral benefits of standard interfaces.
+-  TODO: Research and add more answers here ............
+
+
 
 
