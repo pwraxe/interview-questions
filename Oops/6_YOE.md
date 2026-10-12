@@ -246,8 +246,10 @@ abstract class NewSolution: OldSol, LegacySol() {
 - • Nothing is incredibly useful when dealing with covariant generics (out T). Ex. Kotlin's standard library defines `EmptyList` as `List<Nothing>`. Because Nothing is a subtype of every other type, a `List<Nothing>` can be safely cast into expecting a `List<String>`, `List<Int>`, or any custom object without causing type mismatches.
 
 ----
-ℹ️ Info: In computer science type theory, there is a concept called a Bottom Type (often represented by the symbol ⊥ or "falsum").
-ℹ️ Nothing does not complete the function and throws an exception; Unit lets the function return control back to the caller
+
+- ℹ️ Info: In computer science type theory, there is a concept called a Bottom Type (often represented by the symbol ⊥ or "falsum").
+- ℹ️ Nothing does not complete the function and throws an exception; Unit lets the function return control back to the caller
+
 ----
 
 
