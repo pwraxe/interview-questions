@@ -298,8 +298,124 @@ val isSuccess = object : Word {
 **26. What are sealed interfaces and why were they introduced?**
 - `Sealed interfaces` are restricted interfaces whose implementations must be declared within the same compilation unit and package.
 -  Since Kotlin 1.5, they serve as the exact structural equivalent of sealed classes but carry all the native behavioral benefits of standard interfaces.
--  TODO: Research and add more answers here ............
 
+----
+**27. Can a sealed class have a public constructor?**
+- No, the constructor of a `sealed class` is inherently `protected` to prevent instantiation outside of its defined module/package.
 
+----
 
+**28. Can you extend a data class?**
+- No. Data classes are implicitly `final` and cannot be marked open. (However, they can implement interfaces).
+- **Broken equals() and hashCode() Contracts:** If a subclass adds new properties, symmetric value-based equality breaks. SubClass(x, y) cannot cleanly equal DataClass(x).
+- **The copy() Function Paradox:** The compiler-generated copy() method returns the exact base class type, stripping away any subclass fields and breaking polymorphism.
 
+----
+**29. What is an inline class (or value class)?**
+- It wraps a primitive type to provide type safety without the memory overhead of instantiating an object at runtime (the wrapper is erased during compilation).
+
+----
+30. What is a `Nested class` vs an `Inner class`?
+- By default, a class inside another class is "Nested" and cannot access the outer class's members.
+- Adding the inner keyword gives it a reference to the outer class, allowing member access.
+
+----
+31. How do you access the super of an outer class from an inner class?
+- By qualifying the super keyword: `super@OuterClassName.methodName()`.
+
+----
+**32. What are typealiases?**
+- They provide alternative, readable names for existing types (e.g., `typealias UserId = String`).
+
+----
+**33. Explain Class Delegation (`by` keyword).**
+- Kotlin natively supports the Decorator pattern. A class can implement an interface by delegating all of its public members to a specified instance (e.g., `class MyList(innerList: List<T>) : List<T> by innerList`).
+- Class Delegation is Kotlin's native, compile-time implementation of the Decorator/Proxy pattern.
+-  It allows you to delegate all public members of an interface to a specified object instance, completely eliminating the boilerplate of writing forwarding methods.
+
+----
+
+**34. Explain Property Delegation.**
+- Property delegation hands over the getter/setter logic to another class. lazy and Delegates.observable() are built-in property delegates.
+
+----
+
+**35. How does Kotlin implement the Observer pattern natively?**
+- Using Delegates.observable(). It takes an initial value and a lambda that fires every time the property's setter is called.
+
+----
+
+_**36. Why is the Builder pattern less relevant in Kotlin?**_
+- Kotlin’s named arguments and default parameters solve the "telescoping constructor" anti-pattern natively, making Builders largely unnecessary unless constructing highly complex hierarchical data.
+
+----
+
+37. How can you implement the Factory pattern natively?
+- By using a `companion object` and overloading the `operator fun invoke()`. This allows callers to instantiate the class as if calling a normal constructor, while hiding the factory logic.
+
+----
+
+_38. How is the Strategy pattern simplified in Kotlin OOP?_
+- Instead of creating heavy Strategy interface classes, Kotlin's support for higher-order functions allows you to pass lambdas directly as the execution strategy.
+
+----
+
+**39. How do Extension Functions work under the hood?**
+- They do not actually modify the class they extend. The Kotlin compiler translates them into static methods where the receiver object is passed as the first parameter.
+- Since the compiled method lives entirely outside the target class, it cannot access private or protected members of the receiver class. It obeys standard visibility rules.
+
+----
+
+**40. Can you override an extension function in a subclass?**
+- No. Because they are resolved statically at compile time based on the declared type of the reference, not dynamically based on the runtime instance type.
+
+----
+
+**41. What is Type Erasure in Kotlin?**
+- Like Java, Kotlin generics are erased at runtime (e.g., `List<String>` and `List<Int>` both become List at runtime), making it impossible to check generic types via is at runtime.
+
+----
+
+**42. How does the `reified` keyword bypass Type Erasure?**
+- When used with an `inline` function, `reified` tells the compiler to copy the actual type bytecode directly into the call site, allowing you to use `T::class.java` or `is T` at runtime.
+
+----
+
+**43. What is `Covariance (out)`?**
+- It indicates that a generic class is a producer of T, allowing you to safely assign a List<SubClass> to a List<BaseClass>. It maps to Java's ? extends T.
+
+----
+
+**44. What is `Contravariance (in)`?**
+- It indicates a class is a consumer of `T`, allowing you to assign a `Consumer<BaseClass>` to a `Consumer<SubClass>`. It maps to Java's ? `super T`.
+
+----
+
+**45. What is the Star Projection `(*)`?**
+- Equivalent to Java’s `<?>`. It is used when you don’t know the specific type argument, but you want to use the generic safely (acts as out Any? for reading and in Nothing for writing).
+
+----
+
+**46. Can you use `reified` without `inline`?**
+- No. The compiler needs the function to be inlined so it can replace the type parameter with the actual type at the execution site.
+
+----
+
+**47. What does the `Unit` return type represent in OOP?**
+- Unlike Java's void (which is just a keyword), `Unit` is an actual `singleton object` in Kotlin's OOP hierarchy. It represents a function that completes successfully but returns no meaningful data.
+
+----
+
+**48. How does Destructuring (val (x, y) = point) work under the hood?**
+- It relies on convention. The compiler looks for operator fun `component1()`, operator fun `component2()`, etc., on the object being destructured.
+
+----
+
+**49. Can you implement custom destructuring for a `standard class`?**
+- Yes. Even if it's not a `data class`, you can manually write operator fun `component1(): Type` inside your class to enable destructuring.
+
+----
+
+**50. What is a `Single Abstract Method (SAM)` conversion?**
+- It allows you to pass a `lambda expression` instead of an anonymous object when an interface only requires the implementation of a single abstract method (e.g., Runnable or Android's OnClickListener).
+ 
