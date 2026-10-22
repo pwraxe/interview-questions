@@ -68,20 +68,60 @@
 
 ----
 
+**11. What is a `CoroutineContext`?**
+- It is an immutable, indexed set of element instances that define the behavior, execution thread, lifecycle, and error-handling rules of a coroutine.
+- It is a collection of elements that control how and where a coroutine runs.
+- It contains 4 main things: `Job` (lifecycle), `Dispatcher` (thread pool), `CoroutineName` (debugging name), and `CoroutineExceptionHandler` (error handling).
+- You combine elements easily using the plus operator `(+)`, like `Dispatchers.IO + Job()`.
+- You can think of it as a map-like collection where each element has a unique key.
+- `val context = Dispatchers.IO + CoroutineName("MyWorker")`
 
-Coroutine Context & Exception Handling
+----
+
+12. How does `CoroutineExceptionHandler` work?
+- It acts like a global `try-catch` for uncaught exceptions in root coroutines.
+- It only works when attached to a coroutine started with `launch` — never with `async`.
+- For `async`, exceptions are stored inside the `Deferred` and thrown only when you call `.await()`.
+- A `CoroutineExceptionHandler` acts as a global catch block for a coroutine hierarchy, but it only catches uncaught exceptions that are propagated up to a root job.
+```
+// 1. Define the handler at the root level
+val errorHandler = CoroutineExceptionHandler { _, exception -> 
+    println("Caught global exception: ${exception.message}") 
+}
+
+// 2. Attach to scope or root launch; won't catch if attached inside a child launch
+val scope = CoroutineScope(Job() + Dispatchers.Main + errorHandler)
+scope.launch { // Root coroutine
+    throw RuntimeException("Network Failed") // Caught by errorHandler
+}
+```
+
+----
+
+**13. What is the difference between delay() and Thread.sleep()?**
+- `delay()` suspends the coroutine, freeing up the underlying thread so other tasks can run on it.
+- `Thread.sleep()` locks the entire OS thread completely; if called on the Main thread, the app will freeze and trigger an ANR.
+- Hence Always use `delay()` inside coroutines.
+
+----
+
+**14. What is yield() in coroutines?**
+- It pauses the current coroutine momentarily (for a while) to give other coroutines on the same thread a chance to run.
+- It also checks if the coroutine was cancelled, making it an easy way to keep CPU-heavy tasks responsive.
+- `yield()` is a cancellable suspending function in Kotlin Coroutines that pauses the current coroutine and temporarily releases the execution thread, allowing other waiting coroutines on the same dispatcher or thread pool to run
+
+----
+ 
+**15. What is the difference between GlobalScope and lifecycleScope / viewModelScope?**
+- `GlobalScope`: Lives for the entire app process. It never dies on its own, easily causing massive memory leaks.
+- `viewModelScope`: Automatically cancels all background jobs when the ViewModel is cleared.
+- `lifecycleScope`: Bound to Activity/Fragment lifecycles and cancels when the UI component is destroyed.
 
 
+----
 
 
-
-
-
-
-
-
-
-
+**Kotlin Flow & Reactive Streams**
 
 
 
