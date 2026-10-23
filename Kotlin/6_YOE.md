@@ -117,11 +117,125 @@ scope.launch { // Root coroutine
 - `viewModelScope`: Automatically cancels all background jobs when the ViewModel is cleared.
 - `lifecycleScope`: Bound to Activity/Fragment lifecycles and cancels when the UI component is destroyed.
 
+----
+
+**16. What is a Kotlin Flow?**
+- A Flow is a `cold stream` that can emit multiple values sequentially over time.
+- It is built directly on top of coroutines, giving you native backpressure and cancellation for free.
+- It acts like a modern, lightweight, Kotlin-friendly replacement for `RxJava`.
+- A Kotlin Flow is like a water pipe that delivers a steady stream of data over time.
+- Instead of giving you a whole list of data at once, it calculates and sends one item at a time asynchronously,
+- only producing data when someone is at the other end ready to catch it.
+
+----
+**17. What is the difference between a `Cold Stream` and a `Hot Stream`?**
+- `Cold Stream (Flow):` Does nothing until a collector starts listening. (Only Produced when a collector is receiving)
+- `Hot Stream (StateFlow / SharedFlow):` Produces data even if nobody is listening (Collectors only receive data emitted while they are tuned in.)
+- Flows created via `flow { ... }` are Cold; `StateFlow` and `SharedFlow` are Hot.
+
+----
+
+**18. What is `StateFlow` and when do you use it?**
+- A hot stream that always holds a single, latest value in memory.
+- It requires an initial value and will not emit duplicate consecutive values (it has built-in `distinctUntilChanged`).
+- It is the standard replacement for `LiveData` in modern `Android architecture.`
+
+----
+
+**19. What is `SharedFlow` and when do you use it?**
+- A hot stream meant for sending events or messages to multiple observers (like navigation, Toast alerts, or SnackBar events).
+- It does not require an initial value.
+
+----
+
+**20. How do you convert a `cold Flow` to a `hot Flow`?**
+- Use the `stateIn()` operator to turn it into a `StateFlow`.
+- Use the `shareIn()` operator to turn it into a `SharedFlow`.
+- Both operators require a `scope`, a starting policy (like `SharingStarted.WhileSubscribed(5000)`), and an initial value for state.
+
+----
+
+**21. What does `SharingStarted.WhileSubscribed(5000)` mean?**
+- It keeps the upstream flow active as long as there is at least one active subscriber.
+- When the app goes to the background and subscribers drop to zero, it waits 5 seconds before stopping upstream work.
+- This 5-second buffer prevents unnecessary restarts during rapid screen rotations.
+
+----
+
+**22. What is the difference between `collect` and `collectLatest`?**
+- `collect`: Processes every single emitted value one after another without skipping.
+- `collectLatest`: If a new value arrives while the previous value is still being processed, it cancels the previous work and starts processing the new one immediately.
+- Use `collectLatest` for search bars where you only care about the most recent query result.
+
+----
+
+**23. What does `flowOn()` do?**
+- It changes the dispatcher for the upstream operations (everything written above `flowOn`).
+- It does not affect the downstream collector (the code inside `collect`).
+- It allows you to run expensive data fetching on `Dispatchers.IO` while collecting safely on `Dispatchers.Main`.
+
+----
+
+**24. What is the Flow "Context Preservation" rule?**
+- A Flow builder cannot emit values from a different context than the collector expects (e.g., calling `emit()` inside `withContext(Dispatchers.IO)` directly inside a `flow { }` builder will crash).
+- Kotlin enforces this to prevent unpredictable threading bugs.
+- To change the emitting thread cleanly, use `.flowOn(Dispatchers.IO)`.
+
+----
+
+**25. What is `callbackFlow` and why is it useful?**
+- A flow builder designed to convert legacy listener/callback APIs (like Firebase, LocationManager, or sensor listeners) into a Flow.
+- It keeps the channel open until you explicitly close it.
+- You must call `awaitClose { ... }` at the end to clean up and unregister your listener when the flow is cancelled.
+
+----
+
+**26. What is the difference between flatMapConcat, flatMapMerge, and flatMapLatest?**
+- `flatMapConcat`: Waits for the inner flow to completely finish before starting the next one.
+- `flatMapMerge`: Runs multiple inner flows concurrently at the same time.
+- `flatMapLatest`: Cancels the previous inner flow whenever a new outer item arrives.
+
+----
+
+**27. What does the combine operator do?**
+- Takes two or more flows and emits a new result whenever any of them emits an update.
+- It always pairs the latest emitted values from all input flows.
+- Perfect for screens that depend on multiple data sources (e.g., combining `userProfileFlow` and `cartItemsFlow`).
 
 ----
 
 
-**Kotlin Flow & Reactive Streams**
+**28. What does the `zip` operator do?**
+- Pairs values from two flows one-to-one in order (1st with 1st, 2nd with 2nd).
+- If flow A emits faster than flow B, flow A waits until flow B catches up.
+- Emits only as many items as the shorter of the two flows.
+
+----
+
+**29. What is `Backpressure` in Kotlin Flow?**
+- A situation where the producer emits data much faster than the consumer can process it.
+- In Flow, backpressure is handled automatically by suspending the producer until the consumer is ready.
+- You can customize this behavior using operators like `.buffer()`, `.conflate()` (drops intermediate values), or `.collectLatest()`.
+
+----
+
+**30. What is a `Channel` in Kotlin?**
+- Think of it as a pipe to send data between different coroutines (one coroutine sends, another receives).
+- While Flow streams data to observers, a Channel delivers each piece of data to one receiver only.
+- Channels are hot and useful for task queues or one-off event pipelines.
+
+----
+
+**Inline Functions & Bytecode Internals**
+
+
+
+
+
+
+
+
+
 
 
 
