@@ -226,11 +226,77 @@ scope.launch { // Root coroutine
 
 ----
 
-**Inline Functions & Bytecode Internals**
+**31. What is an `inline` function?**
+- It tells the compiler to copy the function's actual code directly into the place where it is called, instead of making a standard method jump.
+- It eliminates the memory overhead of allocating anonymous class objects for lambdas passed into the function.
+- Use it primarily on functions that accept lambda parameters.
 
+----
 
+**32. What is `noinline`?**
+- Used when an `inline` function accepts multiple lambdas, but you want to exclude one of them from being inlined.
+- The non-inlined lambda can then be stored in a variable or passed around to other functions.
+- Syntax: `inline fun doWork(block1: () -> Unit, noinline block2: () -> Unit)`.
 
+----
 
+**33. What is `crossinline`?**
+- Used on a lambda parameter inside an `inline` function when that lambda will be executed inside another context (like an inner object or runnable).
+- It prevents the caller from writing a "`non-local return`" (`return`) that would mistakenly exit the outer calling function.
+- It protects your code from accidental premature exits.
+
+----
+
+**34. What is a "`Non-Local Return`"?**
+- In Kotlin, writing `return` inside an inlined lambda exits the entire enclosing function, not just the lambda itself.
+- This is only possible because the lambda code is inlined directly into the parent function.
+- In standard `non-inlined` lambdas, non-local returns are banned (you must use qualified returns like `return@forEach`).
+
+----
+
+**35. What is the memory cost of a normal Lambda in Kotlin?**
+- For non-inlined functions, every lambda creates a new Java object instance (an implementation of `Function0`, `Function1`, etc.) behind the scenes.
+- If called inside a loop, it generates high garbage collection (GC) pressure by constantly creating short-lived objects.
+- Marking higher-order utility functions with `inline` avoids this memory overhead entirely.
+
+----
+
+**36. What does `@JvmField` do?**
+- By default, Kotlin creates private fields with public getters and setters in bytecode.
+- `@JvmField` tells the compiler to generate a plain, public Java field without any getters or setters.
+- It improves Java-Kotlin interop performance and is often required by libraries like Parcelable or JUnit rules.
+
+----
+
+**37. What does `@JvmStatic` do?**
+- Applied to functions or properties inside a `companion object` or `object`.
+- It forces the compiler to generate a true `static` method/field in the compiled Java class.
+- Without it, Java code has to call `MyClass.Companion.myMethod()` instead of `MyClass.myMethod()`.
+
+----
+
+**38. What does `@JvmSynthetic` do?**
+Marks a method or field so it remains invisible to Java code, while remaining fully visible to Kotlin.
+It is useful for library authors who want clean Kotlin-only APIs without cluttering autocomplete for Java consumers.
+It is also used by compilers to hide synthetic helper methods.
+
+----
+
+**39. What is `Primitive Boxing` and how does Kotlin handle it?**
+Kotlin doesn't have primitive keywords like `int` or `boolean`; you write `Int` and `Boolean`.
+If a variable is non-nullable (`Int`), the compiler uses the fast primitive `int` in bytecode.
+If it is nullable (`Int?`) or used in generics (`List<Int>`), it is boxed into an `Integer` object, adding small memory overhead.
+
+----
+
+**40. What is a `tailrec` function?**
+- A modifier for recursive functions that prevents `StackOverflowError`.
+- If the recursive call is the very last operation in the function, the compiler rewrites the recursion into a standard fast `while` loop in bytecode.
+- It gives you clean recursive code with the performance of a loop.
+ 
+----
+
+**Scope Functions & Language Idioms**
 
 
 
