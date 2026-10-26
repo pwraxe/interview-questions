@@ -119,7 +119,7 @@ scope.launch { // Root coroutine
 
 ----
 
-**16. What is a Kotlin Flow?**
+**16. What is a Kotlin `Flow`?**
 - A Flow is a `cold stream` that can emit multiple values sequentially over time.
 - It is built directly on top of coroutines, giving you native backpressure and cancellation for free.
 - It acts like a modern, lightweight, Kotlin-friendly replacement for `RxJava`.
@@ -176,7 +176,7 @@ scope.launch { // Root coroutine
 
 ----
 
-**24. What is the Flow "Context Preservation" rule?**
+**24. What is the Flow `Context Preservation` rule?**
 - A Flow builder cannot emit values from a different context than the collector expects (e.g., calling `emit()` inside `withContext(Dispatchers.IO)` directly inside a `flow { }` builder will crash).
 - Kotlin enforces this to prevent unpredictable threading bugs.
 - To change the emitting thread cleanly, use `.flowOn(Dispatchers.IO)`.
@@ -190,14 +190,14 @@ scope.launch { // Root coroutine
 
 ----
 
-**26. What is the difference between flatMapConcat, flatMapMerge, and flatMapLatest?**
+**26. What is the difference between `flatMapConcat`, `flatMapMerge`, and `flatMapLatest`?**
 - `flatMapConcat`: Waits for the inner flow to completely finish before starting the next one.
 - `flatMapMerge`: Runs multiple inner flows concurrently at the same time.
 - `flatMapLatest`: Cancels the previous inner flow whenever a new outer item arrives.
 
 ----
 
-**27. What does the combine operator do?**
+**27. What does the `combine` operator do?**
 - Takes two or more flows and emits a new result whenever any of them emits an update.
 - It always pairs the latest emitted values from all input flows.
 - Perfect for screens that depend on multiple data sources (e.g., combining `userProfileFlow` and `cartItemsFlow`).
