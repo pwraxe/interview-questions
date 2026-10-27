@@ -129,7 +129,7 @@ scope.launch { // Root coroutine
 
 ----
 **17. What is the difference between a `Cold Stream` and a `Hot Stream`?**
-- `Cold Stream (Flow):` Does nothing until a collector starts listening. (Only Produced when a collector is receiving)
+- `Cold Stream (Flow):` Does nothing until a collector starts listening. (Only produced when a collector is receiving)
 - `Hot Stream (StateFlow / SharedFlow):` Produces data even if nobody is listening (Collectors only receive data emitted while they are tuned in.)
 - Flows created via `flow { ... }` are Cold; `StateFlow` and `SharedFlow` are Hot.
 
@@ -177,16 +177,50 @@ scope.launch { // Root coroutine
 ----
 
 **24. What is the Flow `Context Preservation` rule?**
-- A Flow builder cannot emit values from a different context than the collector expects (e.g., calling `emit()` inside `withContext(Dispatchers.IO)` directly inside a `flow { }` builder will crash).
-- Kotlin enforces this to prevent unpredictable threading bugs.
-- To change the emitting thread cleanly, use `.flowOn(Dispatchers.IO)`.
+- The Context Preservation rule states that a Kotlin Flow always collects and emits its items within the exact same CoroutineContext (like a specific thread) that started it.
+- The producer side (inside flow { ... }) is strictly forbidden from changing the thread internally using withContext();
+- if you want to switch threads for the producer, you must use the .flowOn() operator instead.
 
+```
+// ❌ WRONG WAY: Violates Context Preservation (Will throw an IllegalStateException)
+fun badFlow() = flow {
+    withContext(Dispatchers.IO) { // DO NOT DO THIS inside flow blocks
+        emit("Data") 
+    }
+}
+
+//  RIGHT WAY: Uses .flowOn() to safely change the upstream producer thread
+fun goodFlow() = flow {
+    emit("Data") // Emits on Dispatchers.IO thanks to flowOn
+}.flowOn(Dispatchers.IO) 
+
+// Consumption: The data is collected on whatever thread the scope is running on (e.g., Main)
+viewModelScope.launch(Dispatchers.Main) {
+    goodFlow().collect { value -> println("Received $value on Main thread") }
+}
+```
 ----
 
 **25. What is `callbackFlow` and why is it useful?**
 - A flow builder designed to convert legacy listener/callback APIs (like Firebase, LocationManager, or sensor listeners) into a Flow.
 - It keeps the channel open until you explicitly close it.
 - You must call `awaitClose { ... }` at the end to clean up and unregister your listener when the flow is cancelled.
+- A callbackFlow is a bridge that converts old, callback-based APIs (like listener interfaces) into modern, reactive Kotlin Flows.
+- It is incredibly useful for wrapping asynchronous Android legacy systems—such as Firebase listeners, Location updates, or sensor API callbacks—into a stream that can be cleanly collected, paused, and canceled automatically using coroutines.
+```
+// Converting a traditional listener API into a reactive Flow stream
+fun trackLocationUpdates(locationManager: LocationManager): Flow<Location> = callbackFlow {
+    val listener = object : LocationListener {
+        override fun onLocationChanged(loc: Location) {
+            trySend(loc) // Sends location updates into the Flow stream safely
+        }
+    }
+    locationManager.requestLocationUpdates(listener)
+
+    // CRITICAL: Clean up and unregister the listener when the flow collection stops
+    awaitClose { locationManager.removeUpdates(listener) }
+}
+```
 
 ----
 
@@ -276,16 +310,16 @@ scope.launch { // Root coroutine
 ----
 
 **38. What does `@JvmSynthetic` do?**
-Marks a method or field so it remains invisible to Java code, while remaining fully visible to Kotlin.
-It is useful for library authors who want clean Kotlin-only APIs without cluttering autocomplete for Java consumers.
-It is also used by compilers to hide synthetic helper methods.
+- Marks a method or field so it remains invisible to Java code, while remaining fully visible to Kotlin.
+- It is useful for library authors to create clean Kotlin-only APIs without cluttering autocomplete for Java consumers.
+- Compilers also use it to hide synthetic helper methods.
 
 ----
 
 **39. What is `Primitive Boxing` and how does Kotlin handle it?**
-Kotlin doesn't have primitive keywords like `int` or `boolean`; you write `Int` and `Boolean`.
-If a variable is non-nullable (`Int`), the compiler uses the fast primitive `int` in bytecode.
-If it is nullable (`Int?`) or used in generics (`List<Int>`), it is boxed into an `Integer` object, adding small memory overhead.
+- Kotlin doesn't have primitive keywords like `int` or `boolean`; you write `Int` and `Boolean`.
+- If a variable is non-nullable (`Int`), the compiler uses the fast primitive `int` in bytecode.
+- If it is nullable (`Int?`) or used in generics (`List<Int>`), it is boxed into an `Integer` object, adding small memory overhead.
 
 ----
 
@@ -296,17 +330,77 @@ If it is nullable (`Int?`) or used in generics (`List<Int>`), it is boxed into a
  
 ----
 
-**Scope Functions & Language Idioms**
+**41. How do you choose between the 5 Scope Functions (`let`, `run`, `apply`, `also`, `with`)?**
+- `apply`: Context is this; returns the object. Best for object configuration (e.g., configuring `Intent` or `TextView`).
+- `also`: Context is it, returns the object. Best for side-effects like logging or printing without altering the object.
+- `let`: Context is it; returns the lambda result. Best for null-checks (`?.let`) or transforming a value.
+- `run`: Context is this; returns the lambda result. Best for computing a result on an object or grouping code.
+- `with`: Context is this, returns lambda result. Non-extension function used to run multiple operations on a non-null object without repeating its name.
+
+----
+
+**42. What is the difference between `Iterable` (List) and `Sequence`?**
+- `Iterable` (Eager): Every operator (like `map` or `filter`) creates a brand-new intermediate collection in memory right away.
+- `Sequence` (Lazy): Processes items one-by-one through the entire pipeline only when a terminal operator (like `toList()`) is called.
+- For small lists, standard collections are faster; for huge lists (thousands of items) with multiple transforms, `Sequence` saves significant memory.
+
+----
+
+**43. What is Operator Overloading?**
+- Kotlin lets you give custom behavior to standard mathematical or logical operators (+, -, *, ==) for your own classes.
+- You do this by marking a function with the `operator` keyword using specific reserved names (e.g., `operator fun plus(...)`).
+- Example: defining `operator fun plus` on a `Money class` so you can write `val total = moneyA + moneyB`.
+
+----
+
+**44. What are `Infix` Functions?**
+- Functions marked with `infix` that can be called without using dots and parentheses.
+- They must be member functions or extension functions and must take exactly one parameter.
+- Common examples: `"key" to "value"` (used in creating Maps) or `5 downTo 1`.
+
+----
+
+**45. What is a Platform Type (`T!`)?**
+- A type that comes from Java code where nullability annotations (`@Nullable` or `@NonNull`) are missing.
+- The Kotlin compiler displays it with a single exclamation mark (e.g., `String!`).
+- Kotlin cannot check its nullability at compile time, so treating it as non-null can cause a `NullPointerException` at runtime if Java returns `null`.
+
+----
+
+**46. What is the Elvis Operator (`?:`) and how does it evaluate?**
+- It returns the expression on its left if it is not null; otherwise, it executes and returns the right side.
+- The right side is evaluated lazily (only if the left side is actually null).
+- You can safely use `return` or `throw` on the right side: `val name = user.name ?: return`.
 
 
+----
+
+**47. What is `Smart Casting` and when does it fail?**
+- If you check a type with `if (x is String)`, Kotlin automatically casts `x` to `String` inside the `if` block without manual casting.
+- It fails if the variable is a mutable public property (`var`), because another thread or getter could change the value between the check and the usage.
+- To fix this failure, copy the mutable property into a local `val` before running the is check.
+
+----
+
+**48. What is the difference between `==` and `===`?**
+- `==` (Structural equality): Checks if the contents/values are equal by calling .equals().
+- `===` (Referential equality): Checks if both references point to the exact same object location in memory.
+- For primitives, `===` checks if the raw values are identical.
+
+----
+
+**49. What does the `typealias` keyword do, and does it affect runtime?**
+- It gives an alternative, readable name to an existing complex type (e.g., `typealias ClickListener = (View, Int) -> Unit`).
+- It does not create a new type; it simply acts as an alias.
+- There is zero runtime performance overhead because the compiler swaps it back to the original type during compilation.
+
+----
 
 
-
-
-
-
-
-
+**50. What is the difference between Kotlin's `const val` and Java's `static final`?**
+- Both compile to static final fields, but `const val` in Kotlin is strictly inlined at the call site at compile time.
+- `const val` can only be applied to primitives and Strings, and must reside at the top level or inside an `object`.
+- Normal `val` fields can hold complex objects and are evaluated at runtime, whereas `const val` is burned directly into bytecode.
 
 
 
