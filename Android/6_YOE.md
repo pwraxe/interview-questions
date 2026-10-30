@@ -21,7 +21,7 @@
 
 ----
 **4. Why does a Fragment have two separate lifecycles (`Lifecycle` vs `ViewLifecycle`)?**
-- A Fragment instance can outlive its UI layout (for example, when a Fragment is placed on the BackStack, its View is destroyed via  `onDestroyView`, but the Fragment instance remains alive).
+- A Fragment has two separate lifecycles because a Fragment's view can be destroyed and recreated multiple times while the underlying Fragment instance remains alive.
 - If you observe `LiveData/Flow` using the Fragment instance's lifecycle, multiple duplicate observers will pile up every time the user navigates back.
 - Always pass `viewLifecycleOwner` when observing data inside a Fragment's UI.
 
