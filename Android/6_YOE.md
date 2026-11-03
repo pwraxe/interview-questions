@@ -36,12 +36,43 @@
 
 #### B) Android Core Components & IPC - 4H
 
+**6. What are the four main application components in Android?**
+- `Activity:` The UI window where users interact with the app.
+- `Service:` A background work component without a user interface (e.g., music playback or file sync).
+- `Broadcast Receiver:` A component that listens for system-wide or app-level broadcast events (like airplane mode or custom alerts).
+- `Content Provider:` A component that securely shares structured data across different app processes (e.g., reading device contacts).
 
+---- 
 
+**7. What is an Intent and what are the two main types?**
+- An Intent is an asynchronous messaging object used to request an action from another component.
+- Explicit Intent: Specifies the exact destination class name (e.g., `Intent(context, ProfileActivity::class.java)`), used within your own app.
+- Implicit Intent: Declares a general action to perform (e.g., `Intent.ACTION_VIEW` with a web URL), allowing the OS to pick an appropriate app to handle it.
 
+----
 
+**8. What is an `IntentFilter?`**
+- An expression declared in the `AndroidManifest.xml` that specifies the types of implicit intents a component can handle.
+- It filters incoming intents based on `action`, `category`, and `data` type.
+- For Android 12+, any component with an intent filter must explicitly define `android:exported="true"` or `"false"` for security.
 
+----
 
+**9. What is IPC (Inter-Process Communication) and how does Android do it?**
+- IPC allows two completely separate application processes on the phone to safely send data to each other.
+- Android implements IPC at the Linux kernel level using the high-speed Binder driver with shared memory.
+- High-level abstractions like AIDL (Android Interface Definition Language) and `Messenger` build on top of Binder.
+
+----
+
+10. What is AIDL and when should you use it?
+- AIDL (Android Interface Definition Language) lets you define an interface that client apps and a remote Service agree on to talk to each other across processes.
+- It generates Java code that automatically parcels and unparcels arguments across process boundaries.
+- Use it only when multiple separate apps need to access a multi-threaded service simultaneously; otherwise, standard `Messenger` or `Bound Service` is simpler.
+
+----
+
+## Services & Background Execution
 
 
 
