@@ -6,8 +6,8 @@
 2. What are the four basic OOP principles? (A, E, I, P)
   - Abstraction: Hiding internal details and exposing only the necessary part
   - Encapsulation: Privatising properties and exposing them via read-only methods
-  - Inheritance: (Parent Child Relationship) Parent class extends to the child to reuse the state and behaviour of the parent class
-  - Polymorphism: (Many-Form) Allow to override or overload methods in a class
+  - Inheritance: (Parent-Child Relationship) A parent class extends to the child to reuse the state and behaviour of the parent class
+  - Polymorphism: (Many-Form) Allows overriding or overloading methods in a class
 
 
 3. What is a class in Kotlin?
@@ -15,12 +15,12 @@
 
 
 4. How do you define a class in Kotlin?
-  - by class keyword with class Name
+  - By the class keyword with class Name
   - `class Solution{ ... }`
 
 
 5. What is an object in Kotlin?
-  - An object is an instance of a class that has actual states and behaviour
+  - An object is an instance of a class that has actual state and behaviour
 
 
 6. How do you create an object in Kotlin?
@@ -32,33 +32,33 @@
 
 
 8. What is the primary constructor in Kotlin?
-  - Primary constructor is defined at the class header, and properties are initialized instantly
+  - The primary constructor is defined at the class header, and properties are initialized instantly
   - Properties in the primary constructor can be set private or public
 
 
 9. What are secondary constructors in Kotlin?
-  - Secondary constructor is a special member function which is used to initilized object of a class,
-  - This is written inside a class and has a constructor keyword, and it requiresa  primary constructor if primary exists
+  - A secondary constructor is a special member function that is used to initialize an object of a class,
+  - This is written inside a class and has a constructor keyword, and it requires a  primary constructor if a primary constructor exists
 
 
 10. What is an init block in Kotlin?
-  - It is used to initialize objects or states before constructor calls
-  - It calls after the primary constructor property is initialized
+  - It is used to initialize objects or states before the constructor is called
+  - It is called after the primary constructor property is initialized
 
 
 11. What is encapsulation?
   - It restricts direct access to prevent accidental modification
-  - Its properties are private by default, and can be exposed via a public method of that class
+  - Its properties are private by default and can be exposed via a public method of that class
 
 
 12. How does Kotlin support encapsulation?
   - By Visibility Modifiers (Private, Public, Protected, Internal)
   - Immutable Variable declaration, which leads to read-only properties
-  - By generating getter and setter, it reduces boilerplate codes
+  - By generating getters and setters, it reduces boilerplate codes
 
 
 13. What are the visibility modifiers in Kotlin?
-  - In Kotlin, we say, Visibility Modifiers
+  - In Kotlin, we say Visibility Modifiers
   - In Java, we say, Access Modifiers
   - Those are: Public, Private, Protected, Internal
 
@@ -71,13 +71,13 @@
   - It is a special function used to retrieve the value of a property
   - Kotlin automatically generates a default getter property
   - You can customize by overriding the get() method
-  - It allows creating virtual property that dont store data but calculates on the fly
+  - It allows creating virtual properties that do not store data but calculate on the fly
   - If the property is defined by val, then only a getter is generated
 
 
 16. What is a setter in Kotlin?
   - It is a special function which use to set a new value to a property
-  - kotlin internally generates a setter to set the value for a mutable property (a property that is declared by `var`)
+  - Kotlin internally generates a setter to set the value for a mutable property (a property that is declared by `var`)
   - You have a field identifier to set the actual value to property to avoid recursion
   - By using a custom setter, you can control the setting value or modifying variable
 
@@ -100,15 +100,15 @@
 
 19. What is inheritance?
   - It is one of the pillars of OOPs
-  - Inheriatance allow parent class to extend its properties and behaviour to the child class
+  - Inheritance allows a parent class to extend its properties and behaviour to the child class
   - It defines an IS-A relationship
-  - Kotlin classes are final by default, hence an inheritance class needs to be open to extend
+  - Kotlin classes are final by default; hence, an inheritance class needs to be open to extend
 
   
 20. How do you implement inheritance in Kotlin?
-  - Every class in kotlin is final by-default, 
+  - Every class in Kotlin is final by default 
   - To achieve inheritance, we must open the class to extend
-  - It uses a colon to extend Parent class to child class
+  - It uses a colon to extend a parent class in a child class
   - open class Child: Parent() { ... }
 
   
@@ -118,6 +118,7 @@
 
 22. What is the `final` keyword in Kotlin?
   - The final keyword is used to prevent a class, method, or property from being inherited or overridden.
+  - final properties can be changed in the same class but not overridden in a subclass
 
 
 23. Can Kotlin classes be inherited by default?
@@ -125,12 +126,12 @@
 
 
 24. How do you call the parent class's constructor in Kotlin?
-  - For Primary constructor case: If the child class has a primary constructor, you pass the parameters directly to the parent's constructor after the colon.
+  - For the primary constructor case: If the child class has a primary constructor, you pass the parameters directly to the parent's constructor after the colon.
   - For Secondary Constructor: If the child class uses a secondary constructor, you use the super keyword to initialize the parent class.
 
 
 25. How do you override a method in Kotlin?
-  - classes and methods are final by default, mark them open to extend their behaviours
+  - Classes and methods are final by default; mark them open to extend their behaviours
   - use open keyword in front of the method name to override the method in a subclass
 
 
